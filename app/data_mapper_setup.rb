@@ -5,6 +5,7 @@ DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://localhost/guesswho
 require './app/models/person'
 require './app/models/trait'
 require './app/models/crowd'
+require './app/models/person_traits'
 
 
 DataMapper.finalize

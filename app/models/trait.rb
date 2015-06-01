@@ -6,6 +6,7 @@ class Trait
   property :description,  String
   property :answer,    String
 
-  belongs_to :person, :required => false
+  # belongs_to :person, :required => false
+  has n, :person, through: Resource
 
 end

@@ -5,9 +5,7 @@ require 'byebug'
 
 require_relative 'data_mapper_setup'
 
-require './app/models/person'
-require './app/models/trait'
-require './app/models/crowd'
+require './app/models/player'
 
   enable :sessions
   use Rack::Flash
