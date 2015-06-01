@@ -10,10 +10,10 @@ class Person
 
   # This block describes what resources our model will have
   property :id,     Serial # Serial means that it will be auto-incremented for every record
-  property :name,  String
-  property :trait1,    String
+  property :name,         String
+  property :trait1Answer, String
 
-  has n, :traits, through: Resource
+  has n, :traits
   belongs_to :crowd
 
 end
