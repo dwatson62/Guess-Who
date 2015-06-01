@@ -11,6 +11,8 @@ describe Player do
                     crowd_id: Crowd.first.id)
       boris = Person.create(name: "Boris",
                     crowd_id: Crowd.first.id)
+      john = Person.create(name: "John",
+                    crowd_id: Crowd.first.id)
       hat = Trait.create(description: "Hat",
                    answer: "Yes",)
       PersonTraits.create(person_id: fred.id,
@@ -18,6 +20,13 @@ describe Player do
       PersonTraits.create(person_id: boris.id,
                           trait_id: hat.id)
   end
+
+  context 'on creation' do
+    it 'has a crowd of 3' do
+      expect(subject.crowd.length).to eq 3
+    end
+  end
+
 
   context 'can choose' do
 
@@ -36,11 +45,17 @@ describe Player do
     end
   end
 
-  context 'player can ask' do
-    it 'who has a hat' do
-      answer = subject.who_has('Hat')
-      expect(answer[0].name).to eq ("Boris")
-      expect(answer[1].name).to eq ("Fred")
+  context 'player can ask if he has a hat' do
+    it 'and will return the crowd wearing a hat if yes' do
+      subject.choose('Fred')
+      expect(subject.who_has('Hat')).to eq 'Yes'
+
+      # expect(subject.crowd.all(up: true).length).to eq 2
+    end
+    it 'and will return the crowd not wearing a hat if no' do
+      subject.choose('John')
+      expect(subject.who_has('Hat')).to eq 'No'
+      # expect(subject.crowd.all(up: true).length).to eq 2
     end
   end
 end
