@@ -3,6 +3,10 @@ require 'data_mapper'
 require 'rack-flash'
 require 'byebug'
 
+require_relative 'data_mapper_setup'
+
+require './app/models/person'
+
   enable :sessions
   use Rack::Flash
 
@@ -13,14 +17,6 @@ require 'byebug'
   set :views, Proc.new { File.join(root, "", "views") }
 
   # set :public_folder, proc { File.join(root) }
-
-  env = ENV['RACK_ENV'] || 'development'
-  DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://localhost/guesswho_#{env}")
-
-# require our class files here!!!
-
-  # After declaring your models, you should finalise them
-  DataMapper.finalize
 
   get '/' do
     "hello world"
