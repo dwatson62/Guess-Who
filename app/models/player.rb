@@ -77,4 +77,14 @@ class Player
       hit.save
     end
   end
+
+  def is_it(person)
+    guess = Person.first(name: person)
+    if guess.name == character.name
+      # the player guessed correctly and wins
+      'You win!'
+    else
+      'Try again!'
+    end
+  end
 end

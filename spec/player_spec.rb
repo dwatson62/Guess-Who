@@ -106,4 +106,31 @@ describe Player do
       expect(subject.show_all.length).to eq 1
     end
   end
+
+  context 'player can guess the person' do
+
+    context 'and win the game' do
+
+      it 'when there is one person left' do
+        subject.choose('Brian')
+        subject.ask('Hat')
+        subject.ask('Black Hair')
+        expect(subject.is_it('Brian')).to eq "You win!"
+      end
+      it 'when there are many people left' do
+        subject.choose('Fred')
+        expect(subject.is_it('Fred')).to eq "You win!"
+      end
+    end
+
+    context 'but if they guess wrong' do
+
+      it 'they do not win' do
+        subject.choose('Fred')
+        subject.ask('Hat')
+        expect(subject.is_it('Boris')).to eq "Try again!"
+      end
+    end
+  end
 end
+
