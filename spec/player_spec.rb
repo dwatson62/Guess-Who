@@ -65,9 +65,11 @@ describe Player do
 
   context 'player can ask if he has a hat' do
 
+    it { is_expected.to respond_to(:correct_guess) }
+    it { is_expected.to respond_to(:incorrect_guess) }
     it { is_expected.to respond_to(:ask).with(1).argument }
 
-    xit 'and will say yes if correct' do
+    it 'and will say yes if correct' do
       subject.choose('Fred')
       expect(subject.ask('Hat')).to eq 'Yes'
     end
@@ -80,10 +82,10 @@ describe Player do
       subject.choose('John')
       expect(subject.ask('Hat')).to eq 'No'
     end
-    xit 'and will remove the people wearing a hat if no' do
+    it 'and will remove the people wearing a hat if no' do
       subject.choose('John')
       subject.ask('Hat')
-      expect(subject.show_all.length).to eq 1
+      expect(subject.show_all.length).to eq 2
     end
   end
 end
