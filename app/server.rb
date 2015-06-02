@@ -48,6 +48,7 @@ end
 
 get '/game' do
   @traits = Trait.all
+  @people = Person.all(up: true)
   erb :game
 end
 

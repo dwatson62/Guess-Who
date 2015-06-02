@@ -5,7 +5,8 @@ describe PersonTraits do
     it 'should be able to match a person with a trait' do
       april = Crowd.create()
       person = Person.create(name: "Fred",
-                             crowd_id: april.id)
+                             crowd_id: april.id,
+                              picture: '/images/fred.jpg')
       hat = Trait.create(description: "Hat",
                    answer: "Yes",)
       PersonTraits.create(person_id: person.id,

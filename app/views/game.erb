@@ -1,13 +1,8 @@
-<img src='/images/fred.jpg' height='100' width='100'>
-<br>
-<img src='/images/brian.jpg' height='100' width='100'>
-<br>
-<img src='/images/boris.jpg' height='100' width='100'>
-<br>
-<img src='/images/john.jpg' height='100' width='100'>
-<br>
-<img src='/images/barry.jpg' height='100' width='100'>
-<br>
+<% @people.each do |person| %>
+  <img src=<%= person.picture%> height='100' width='100'>
+  <br>
+<% end %>
+
 Ask a question:
 <form method='post' action='/game'>
   <select name='questions'>
