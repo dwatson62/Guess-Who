@@ -62,5 +62,19 @@ post '/game' do
   erb :game
 end
 
+post '/guess' do
+  # byebug
+  guess = params[:guess_person]
+  @game = Game.new
+  @player1 = Player.first
+  character = PersonPlayer.first(player_id: @player1.id)
+  character = Person.first(id: character.person_id)
+  @game.choose(character.name)
+  @result = @game.is_it(guess)
+  @traits = Trait.all
+  @people = Person.all(up: true)
+  erb :game
+end
+
 # start the server if ruby file executed directly
 # run! if app_file == $0

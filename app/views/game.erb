@@ -1,5 +1,9 @@
-<%= @answer %>
-
+<% if @result %>
+  <%= @result %>
+<% else %>
+  <%= @answer %>
+<% end %>
+<br>
 <% @people.each do |person| %>
   <img src=<%= person.picture%> height='100' width='100'>
   <br>
@@ -13,4 +17,14 @@ Ask a question:
     <% end %>
   </select>
   <button class="btn btn-primary" type='submit' value='Ask'>Ask</button>
+</form>
+<br>
+Or have a guess:
+<form method='post' action='/guess'>
+  <select name='guess_person'>
+    <% @people.each do |person| %>
+      <option value=<%= person.name %>><%= person.name %></option>
+  <% end %>
+  </select>
+  <button class="btn btn-primary" type='submit' value='Guess'>Guess</button>
 </form>
