@@ -1,10 +1,16 @@
 Guess Who
 <br>
 <% if @character1 %>
-  You have selected <%= @character1 %>
+  Player 1 chose <%= @character1 %>
   <a href='/choose'><button class="btn btn-primary">Player 2</button></a>
 <% elsif @character2 %>
-  You have selected <%= @character2 %>
+  Player 2 chose <%= @character2 %>
+  <a href='/game'><button class="btn btn-primary">Play</button></a>
 <% else %>
   <a href='/choose'><button class="btn btn-primary">Player 1</button></a>
 <% end %>
+
+<form method="post" action="/startagain">
+  <input type="hidden" name="_method" value="delete">
+  <button type="submit" class="btn btn-primary btn-lg" name='Startagain'>Start again</button>
+</form>

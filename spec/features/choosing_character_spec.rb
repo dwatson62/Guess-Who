@@ -8,10 +8,12 @@ feature 'Each player' do
     click_link 'Player 1'
     expect(page).to have_content('Please select a character')
     click_button 'Fred'
-    expect(page).to have_content('You have selected Fred')
+    expect(page).to have_content('Player 1 chose Fred')
     click_link 'Player 2'
     expect(page).to have_content('Please select a character')
     click_button 'John'
-    expect(page).to have_content('You have selected John')
+    expect(page).to have_content('Player 2 chose John')
+    click_link 'Play'
+    expect(current_path).to eq '/game'
   end
 end

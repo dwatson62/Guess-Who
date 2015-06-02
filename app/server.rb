@@ -7,7 +7,8 @@ require_relative 'data_mapper_setup'
 
 require './app/models/player'
 
-# use Rack::Flash
+use Rack::Flash
+use Rack::MethodOverride
 
 #tells you where your views are..
 set :views, Proc.new { File.join(root, "", "views") }
@@ -29,8 +30,18 @@ post '/' do
   erb :index
 end
 
+delete '/startagain' do
+  session[:character1] = nil
+  session[:character2] = nil
+  redirect to '/'
+end
+
 get '/choose' do
   erb :choose
+end
+
+get '/game' do
+  erb :game
 end
 
 # start the server if ruby file executed directly
