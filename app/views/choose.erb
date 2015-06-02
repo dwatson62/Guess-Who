@@ -1,32 +1,11 @@
 Please select a character
 <br>
 
-<img src='/images/fred.jpg' height='100' width='100'>
-<br>
 <form method='post' action='/'>
-  <button class="btn btn-primary" type='submit' name='character' value='Fred'>Fred</button>
-</form>
-<br>
-<img src='/images/brian.jpg' height='100' width='100'>
-<br>
-<form method='post' action='/'>
-  <button class="btn btn-primary" type='submit' name='character' value='Brian'>Brian</button>
-</form>
-<br>
-<img src='/images/boris.jpg' height='100' width='100'>
-<br>
-<form method='post' action='/'>
-  <button class="btn btn-primary" type='submit' name='character' value='Boris'>Boris</button>
-</form>
-<br>
-<img src='/images/john.jpg' height='100' width='100'>
-<br>
-<form method='post' action='/'>
-  <button class="btn btn-primary" type='submit' name='character' value='John'>John</button>
-</form>
-<br>
-<img src='/images/barry.jpg' height='100' width='100'>
-<br>
-<form method='post' action='/'>
-  <button class="btn btn-primary" type='submit' name='character' value='Barry'>Barry</button>
+<% @people.each do |person| %>
+  <img src=<%= person.picture%> height='100' width='100'>
+  <br>
+  <button class="btn btn-primary" type='submit' name='character' value=<%= person.name%>><%= person.name%></button>
+  <br>
+  <% end %>
 </form>

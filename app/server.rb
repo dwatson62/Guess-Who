@@ -52,11 +52,11 @@ post '/game' do
   @game = Game.new
   @player1 = Player.first
   character = PersonPlayer.first(player_id: @player1.id)
-  character = Person.first(id: character.id)
+  character = Person.first(id: character.person_id)
   @game.choose(character.name)
 
   question = params[:questions]
-  @game.ask(question)
+  @answer = @game.ask(question)
   @traits = Trait.all
   @people = Person.all(up: true)
   erb :game

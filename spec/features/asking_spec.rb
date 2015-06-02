@@ -18,11 +18,12 @@ feature 'Player 1' do
     click_link 'Play'
   end
 
-    xscenario 'player 1 asks if he has a hat and get a yes answer' do
+    scenario 'player 1 asks if he has a hat and get a yes answer' do
       expect(page).to have_content("Ask a question:")
       select 'Hat', from: 'questions'
       click_button 'Ask'
       # John and Barry disappear
+      expect(page).to have_content 'Yes'
       expect(Person.all(up: true).length).to eq 3
     end
 
@@ -31,35 +32,45 @@ feature 'Player 1' do
       select 'Hat', from: 'questions'
       click_button 'Ask'
       # John and Barry disappear
+      expect(page).to have_content 'Yes'
       select 'BlackHair', from: 'questions'
       click_button 'Ask'
       # Fred and Boris remain
+      expect(page).to have_content 'No'
       expect(Person.all(up: true).length).to eq 2
     end
 
   end
 
+  context 'players choose John and Boris' do
 
+    before(:each) do
+      visit '/'
+      click_link 'Player 1'
+      click_button 'John'
+      click_link 'Player 2'
+      click_button 'Boris'
+      click_link 'Play'
+    end
 
-  xscenario 'asks if they have a hat and get a no answer' do
-    @@game1.choose('John')
-    @@game2.choose('Boris')
-    visit '/game'
-    expect(page).to have_content("Ask a question:")
-    select 'Hat', from: 'questions'
-    click_button 'Ask'
-    # Fred, Boris and Brian disappear
-    expect(@@game1.show_all.length).to eq 2
+    scenario 'asks if they have a hat and get a no answer' do
+      expect(page).to have_content("Ask a question:")
+      select 'Hat', from: 'questions'
+      click_button 'Ask'
+      # Fred, Boris and Brian disappear
+      expect(page).to have_content 'No'
+      expect(Person.all(up: true).length).to eq 2
+    end
+
+    scenario 'asks if they have black hair and get a yes answer' do
+      expect(page).to have_content("Ask a question:")
+      select 'BlackHair', from: 'questions'
+      click_button 'Ask'
+      # Fred, Boris and Barry disappear
+      expect(page).to have_content 'Yes'
+      expect(Person.all(up: true).length).to eq 2
+    end
+
   end
 
-  xscenario 'asks if they have black hair and get a yes answer' do
-    @@game1.choose('Brian')
-    @@game2.choose('Boris')
-    visit '/game'
-    expect(page).to have_content("Ask a question:")
-    select 'BlackHair', from: 'questions'
-    click_button 'Ask'
-    # Fred, Boris and Barry disappear
-    expect(@@game1.show_all.length).to eq 2
-  end
 end
