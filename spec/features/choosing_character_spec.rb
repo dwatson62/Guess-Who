@@ -17,4 +17,14 @@ feature 'Each player' do
     click_link 'Play'
     expect(current_path).to eq '/game'
   end
+
+  scenario 'chooses other characters' do
+    test_db1
+    visit '/'
+    click_link 'Player 1'
+    click_button 'Brian'
+    click_link 'Player 2'
+    click_button 'John'
+    click_link 'Play'
+  end
 end

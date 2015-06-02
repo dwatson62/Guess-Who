@@ -15,9 +15,6 @@ set :views, Proc.new { File.join(root, "", "views") }
 set :public_folder, 'public'
 enable :sessions
 
-  @@game1 = Game.new
-  @@game2 = Game.new
-
 get '/' do
   Player.create
   Player.create
@@ -30,21 +27,13 @@ post '/' do
     @character1 = Person.first(name: params[:character])
     PersonPlayer.create(player_id: @player1.id,
                         person_id: @character1.id)
-    @@game1.choose(@character1.name)
   else
     @player2 = Player.last
     @character2 = Person.first(name: params[:character])
     PersonPlayer.create(player_id: @player2.id,
                         person_id: @character2.id)
-    @@game2.choose(@character2.name)
   end
   erb :index
-end
-
-delete '/startagain' do
-  session[:character1] = nil
-  session[:character2] = nil
-  redirect to '/'
 end
 
 get '/choose' do
@@ -59,8 +48,15 @@ get '/game' do
 end
 
 post '/game' do
+  # byebug
+  @game = Game.new
+  @player1 = Player.first
+  character = PersonPlayer.first(player_id: @player1.id)
+  character = Person.first(id: character.id)
+  @game.choose(character.name)
+
   question = params[:questions]
-  @@game1.ask(question)
+  @game.ask(question)
   @traits = Trait.all
   @people = Person.all(up: true)
   erb :game
