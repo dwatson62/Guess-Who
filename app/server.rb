@@ -7,21 +7,31 @@ require_relative 'data_mapper_setup'
 
 require './app/models/player'
 
-  enable :sessions
-  use Rack::Flash
+# use Rack::Flash
 
-  #This will allow us to use a new method in our server file, 'delete'
-  use Rack::MethodOverride
+#tells you where your views are..
+set :views, Proc.new { File.join(root, "", "views") }
+set :public_folder, 'public'
+enable :sessions
 
-  #tells you where your views are..
-  set :views, Proc.new { File.join(root, "", "views") }
+get '/' do
+  erb :index
+end
 
-  # set :public_folder, proc { File.join(root) }
-
-  get '/' do
-    "hello world"
+post '/' do
+  if session[:character1]
+    session[:character2] = params[:character]
+    @character2 = session[:character2]
+  else
+    session[:character1] = params[:character]
+    @character1 = session[:character1]
   end
+  erb :index
+end
 
-  # start the server if ruby file executed directly
-  # run! if app_file == $0
+get '/choose' do
+  erb :choose
+end
 
+# start the server if ruby file executed directly
+# run! if app_file == $0

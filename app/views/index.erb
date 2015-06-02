@@ -1,0 +1,10 @@
+Guess Who
+<br>
+<% if @character1 %>
+  You have selected <%= @character1 %>
+  <a href='/choose'><button class="btn btn-primary">Player 2</button></a>
+<% elsif @character2 %>
+  You have selected <%= @character2 %>
+<% else %>
+  <a href='/choose'><button class="btn btn-primary">Player 1</button></a>
+<% end %>

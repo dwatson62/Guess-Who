@@ -1,5 +1,4 @@
 require './app/server'
-require './app/models/player'
 require 'byebug'
 
 describe Player do
