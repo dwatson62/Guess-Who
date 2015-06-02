@@ -1,5 +1,3 @@
-require_relative 'spec_helper'
-
 describe Crowd do
 
   context 'Creation' do

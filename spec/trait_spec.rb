@@ -1,5 +1,3 @@
-require_relative 'spec_helper'
-
 describe Trait do
 
   context 'Creation' do

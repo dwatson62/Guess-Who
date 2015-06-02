@@ -1,4 +1,3 @@
-require_relative 'spec_helper'
 require './app/server'
 require './app/models/player'
 require 'byebug'
@@ -13,6 +12,8 @@ describe Player do
                     crowd_id: Crowd.first.id)
       john = Person.create(name: "John",
                     crowd_id: Crowd.first.id)
+      barry = Person.create(name: "Barry",
+                     crowd_id: Crowd.first.id)
       hat = Trait.create(description: "Hat",
                    answer: "Yes",)
       PersonTraits.create(person_id: fred.id,
@@ -22,8 +23,8 @@ describe Player do
   end
 
   context 'on creation' do
-    it 'has a crowd of 3' do
-      expect(subject.crowd.length).to eq 3
+    it 'has a crowd of 4' do
+      expect(subject.crowd.length).to eq 4
     end
   end
 
@@ -45,17 +46,44 @@ describe Player do
     end
   end
 
-  context 'player can ask if he has a hat' do
-    it 'and will return the crowd wearing a hat if yes' do
-      subject.choose('Fred')
-      expect(subject.who_has('Hat')).to eq 'Yes'
+  context 'player can see all the people that have not been eliminated' do
 
-      # expect(subject.crowd.all(up: true).length).to eq 2
+    it { is_expected.to respond_to(:show_all) }
+
+    it 'at the start of the game' do
+      subject.choose('Fred')
+      expect(subject.show_all.length).to eq 4
     end
-    it 'and will return the crowd not wearing a hat if no' do
+    it 'during the game' do
+      subject.choose('Fred')
+      boris = Person.first(name: 'Boris')
+      boris.up = false
+      boris.save
+      expect(subject.show_all.length).to eq 3
+    end
+  end
+
+  context 'player can ask if he has a hat' do
+
+    it { is_expected.to respond_to(:ask).with(1).argument }
+
+    xit 'and will say yes if correct' do
+      subject.choose('Fred')
+      expect(subject.ask('Hat')).to eq 'Yes'
+    end
+    it 'and will remove the people not wearing a hat if yes' do
+      subject.choose('Fred')
+      subject.ask('Hat')
+      expect(subject.show_all.length).to eq 2
+    end
+    it 'and will say no if incorrect' do
       subject.choose('John')
-      expect(subject.who_has('Hat')).to eq 'No'
-      # expect(subject.crowd.all(up: true).length).to eq 2
+      expect(subject.ask('Hat')).to eq 'No'
+    end
+    xit 'and will remove the people wearing a hat if no' do
+      subject.choose('John')
+      subject.ask('Hat')
+      expect(subject.show_all.length).to eq 1
     end
   end
 end
