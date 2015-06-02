@@ -1,1 +1,19 @@
-game.erb
+<img src='/images/fred.jpg' height='100' width='100'>
+<br>
+<img src='/images/brian.jpg' height='100' width='100'>
+<br>
+<img src='/images/boris.jpg' height='100' width='100'>
+<br>
+<img src='/images/john.jpg' height='100' width='100'>
+<br>
+<img src='/images/barry.jpg' height='100' width='100'>
+<br>
+Ask a question:
+<form method='post' action='/game'>
+  <select name='questions'>
+    <% @traits.each do |item| %>
+      <option value=<%= item.description %>><%= item.description %></option>
+    <% end %>
+  </select>
+  <button class="btn btn-primary" type='submit' value='Ask'>Ask</button>
+</form>

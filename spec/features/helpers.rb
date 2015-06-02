@@ -16,7 +16,7 @@ def test_db
                        answer: "Yes",)
     black_hair = Trait.create(description: "Black Hair",
                               answer: "Yes",)
-    black_hair = Trait.create(description: "Brown Hair",
+    brown_hair = Trait.create(description: "Brown Hair",
                               answer: "Yes",)
     PersonTraits.create(person_id: fred.id,
                         trait_id: hat.id)
