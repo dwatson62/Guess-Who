@@ -14,17 +14,25 @@ describe Player do
                     crowd_id: Crowd.first.id)
       barry = Person.create(name: "Barry",
                      crowd_id: Crowd.first.id)
+      brian = Person.create(name: "Brian",
+                      crowd_id: Crowd.first.id)
       hat = Trait.create(description: "Hat",
+                   answer: "Yes",)
+      black_hair = Trait.create(description: "Black Hair",
                    answer: "Yes",)
       PersonTraits.create(person_id: fred.id,
                           trait_id: hat.id)
       PersonTraits.create(person_id: boris.id,
                           trait_id: hat.id)
+      PersonTraits.create(person_id: brian.id,
+                          trait_id: hat.id)
+      PersonTraits.create(person_id: brian.id,
+                          trait_id: black_hair.id)
   end
 
   context 'on creation' do
     it 'has a crowd of 4' do
-      expect(subject.crowd.length).to eq 4
+      expect(subject.crowd.length).to eq 5
     end
   end
 
@@ -52,14 +60,14 @@ describe Player do
 
     it 'at the start of the game' do
       subject.choose('Fred')
-      expect(subject.show_all.length).to eq 4
+      expect(subject.show_all.length).to eq 5
     end
     it 'during the game' do
       subject.choose('Fred')
       boris = Person.first(name: 'Boris')
       boris.up = false
       boris.save
-      expect(subject.show_all.length).to eq 3
+      expect(subject.show_all.length).to eq 4
     end
   end
 
@@ -76,7 +84,7 @@ describe Player do
     it 'and will remove the people not wearing a hat if yes' do
       subject.choose('Fred')
       subject.ask('Hat')
-      expect(subject.show_all.length).to eq 2
+      expect(subject.show_all.length).to eq 3
     end
     it 'and will say no if incorrect' do
       subject.choose('John')
@@ -86,6 +94,16 @@ describe Player do
       subject.choose('John')
       subject.ask('Hat')
       expect(subject.show_all.length).to eq 2
+    end
+  end
+
+  context 'player chooses Brian, asks if he has a hat, and then black hair' do
+
+    it 'and the crowd will be reduced correctly' do
+      subject.choose('Brian')
+      subject.ask('Hat')
+      subject.ask('Black Hair')
+      expect(subject.show_all.length).to eq 1
     end
   end
 end
