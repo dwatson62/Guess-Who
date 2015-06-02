@@ -1,6 +1,6 @@
 require './app/server'
 
-def test_db
+def test_db1
     Crowd.create()
     fred = Person.create(name: "Fred",
                          crowd_id: Crowd.first.id,
@@ -19,9 +19,9 @@ def test_db
                            picture: '/images/brian.jpg')
     hat = Trait.create(description: "Hat",
                        answer: "Yes",)
-    black_hair = Trait.create(description: "Black Hair",
+    black_hair = Trait.create(description: "BlackHair",
                               answer: "Yes",)
-    brown_hair = Trait.create(description: "Brown Hair",
+    brown_hair = Trait.create(description: "BrownHair",
                               answer: "Yes",)
     PersonTraits.create(person_id: fred.id,
                         trait_id: hat.id)

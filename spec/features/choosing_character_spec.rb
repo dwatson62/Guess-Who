@@ -3,7 +3,8 @@ require_relative 'helpers'
 
 feature 'Each player' do
   scenario 'chooses a character' do
-    test_db
+    test_db1
+    # test_db2
     visit '/'
     expect(page).to have_content("Guess Who")
     click_link 'Player 1'

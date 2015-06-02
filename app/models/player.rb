@@ -22,7 +22,7 @@ class Player
   end
 
   def show_all
-    @crowd = Person.all(up: true)
+    @crowd = Person.all(crowd_id: Crowd.first.id, up: true)
   end
 
   def ask(item)

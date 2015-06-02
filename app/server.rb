@@ -29,7 +29,6 @@ post '/' do
     @@player2.choose(@character2)
   else
     session[:character1] = params[:character]
-    p Person.all
     @character1 = session[:character1]
     @@player1.choose(@character1)
   end
@@ -43,10 +42,19 @@ delete '/startagain' do
 end
 
 get '/choose' do
+  @people = Person.all
   erb :choose
 end
 
 get '/game' do
+  @traits = Trait.all
+  @people = Person.all(up: true)
+  erb :game
+end
+
+post '/game' do
+  question = params[:questions]
+  @@player1.ask(question)
   @traits = Trait.all
   @people = Person.all(up: true)
   erb :game
