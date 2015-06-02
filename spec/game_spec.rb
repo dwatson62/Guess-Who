@@ -2,7 +2,7 @@ require './app/server'
 require 'features/helpers'
 require 'byebug'
 
-describe Player do
+describe Game do
 
   before(:each) do
     test_db1

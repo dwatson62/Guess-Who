@@ -13,5 +13,6 @@ class Person
 
   has n, :traits, through: Resource
   belongs_to :crowd
+  has 1, :player, through: Resource
 
 end

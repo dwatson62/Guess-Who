@@ -5,7 +5,7 @@ require 'byebug'
 
 require_relative 'data_mapper_setup'
 
-require './app/models/player'
+require './app/models/game'
 
 use Rack::Flash
 use Rack::MethodOverride
@@ -15,22 +15,28 @@ set :views, Proc.new { File.join(root, "", "views") }
 set :public_folder, 'public'
 enable :sessions
 
-@@player1 = Player.new
-@@player2 = Player.new
+  @@game1 = Game.new
+  @@game2 = Game.new
 
 get '/' do
+  Player.create
+  Player.create
   erb :index
 end
 
 post '/' do
-  if session[:character1]
-    session[:character2] = params[:character]
-    @character2 = session[:character2]
-    @@player2.choose(@character2)
+  if PersonPlayer.count == 0
+    @player1 = Player.first
+    @character1 = Person.first(name: params[:character])
+    PersonPlayer.create(player_id: @player1.id,
+                        person_id: @character1.id)
+    @@game1.choose(@character1.name)
   else
-    session[:character1] = params[:character]
-    @character1 = session[:character1]
-    @@player1.choose(@character1)
+    @player2 = Player.last
+    @character2 = Person.first(name: params[:character])
+    PersonPlayer.create(player_id: @player2.id,
+                        person_id: @character2.id)
+    @@game2.choose(@character2.name)
   end
   erb :index
 end
@@ -54,7 +60,7 @@ end
 
 post '/game' do
   question = params[:questions]
-  @@player1.ask(question)
+  @@game1.ask(question)
   @traits = Trait.all
   @people = Person.all(up: true)
   erb :game

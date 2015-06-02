@@ -1,10 +1,10 @@
 Guess Who
 <br>
 <% if @character1 %>
-  Player 1 chose <%= @character1 %>
+  Player 1 chose <%= @character1.name %>
   <a href='/choose'><button class="btn btn-primary">Player 2</button></a>
 <% elsif @character2 %>
-  Player 2 chose <%= @character2 %>
+  Player 2 chose <%= @character2.name %>
   <a href='/game'><button class="btn btn-primary">Play</button></a>
 <% else %>
   <a href='/choose'><button class="btn btn-primary">Player 1</button></a>
