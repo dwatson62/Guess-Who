@@ -51,3 +51,33 @@ task :populate_remote do
   require './crowd_data'
   april_db
 end
+
+task :reset_local do
+  DataMapper.setup(:default,  "postgres://localhost/guesswho_development")
+
+  DataMapper.finalize
+
+  DataMapper.auto_upgrade!
+
+  people = Person.all
+  people.each do |x|
+    x.up1 = true
+    x.up2 = true
+    x.save
+  end
+end
+
+task :reset_remote do
+  DataMapper.setup(:default, "postgres://qekcokqxsmmhyx:U6D6ctPM8ou3sXJqkugBEt26Z1@ec2-54-197-224-173.compute-1.amazonaws.com:5432/d9t0v2bnqu246p")
+
+  DataMapper.finalize
+
+  DataMapper.auto_upgrade!
+
+  people = Person.all
+  people.each do |x|
+    x.up1 = true
+    x.up2 = true
+    x.save
+  end
+end

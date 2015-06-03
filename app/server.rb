@@ -18,8 +18,12 @@ enable :sessions
 set :session_secret, 'super secret'
 
 get '/' do
-  # april_db
-  # 2.times { Player.create }
+  people = Person.all
+  people.each do |x|
+    x.up1 = true
+    x.up2 = true
+    x.save
+  end
   erb :index
 end
 
