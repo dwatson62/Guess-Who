@@ -23,7 +23,7 @@ feature 'Player 1' do
       expect(page).to have_content("Or have a guess:")
       select 'Boris', from: 'guess_person'
       click_button 'Guess'
-      expect(page).to have_content 'You win!'
+      expect(page).to have_content 'Player 1 wins!'
     end
 
     scenario 'player 1 guesses Boris and does not win the game' do

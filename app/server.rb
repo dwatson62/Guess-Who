@@ -89,6 +89,9 @@ post '/guess' do
     character = Person.first(id: character.person_id)
     @game.choose(character.name)
     @result = @game.is_it(guess)
+    if @result == 'You win!'
+      redirect to '/win'
+    end
     @people1 = @game.show_all(1)
     @people2 = @game.show_all(2)
     session[:player_turn] = 2
@@ -97,12 +100,20 @@ post '/guess' do
     character = Person.first(id: character.person_id)
     @game.choose(character.name)
     @result = @game.is_it(guess)
+    if @result == 'You win!'
+      redirect to '/win'
+    end
     @people1 = @game.show_all(1)
     @people2 = @game.show_all(2)
     session[:player_turn] = 1
   end
   @player_turn = session[:player_turn]
   erb :game
+end
+
+get '/win' do
+  @player_turn = session[:player_turn]
+  erb :win
 end
 
 delete '/startagain' do
