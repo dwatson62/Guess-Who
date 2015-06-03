@@ -1,23 +1,16 @@
-require './app/models/person'
-require './app/models/trait'
 require './app/models/crowd'
 require './app/models/person_traits'
+require './app/models/person'
+require './app/models/trait'
 
 require 'byebug'
 
 class Game
-
   attr_reader :character
 
-  def initialize
-    @person_traits = PersonTraits.all
-  end
-
-  def choose(character)
+  def select(character)
     @character = Person.first(name: character)
-    if @character == nil
-      raise "Character not found"
-    end
+    fail 'Character not found' if @character.nil?
   end
 
   def show_all(player)
@@ -29,56 +22,42 @@ class Game
   end
 
   def ask(item, player)
-    id = character.id
-    @trait = Trait.first(description: item)
-    person = PersonTraits.first(person_id: id, trait_id: @trait.id)
+    trait = Trait.first(description: item)
+    person = PersonTraits.first(person_id: character.id, trait_id: trait.id)
+    @ids = []
+    person_traits = PersonTraits.all
+    person_traits.each do |thing|
+      @ids << thing.person_id if thing.trait_id == trait.id
+    end
     if person
       # then the player guessed correctly,
       # and all characters not wearing this item
       # must have their up? property made false
       correct_guess(player)
-      "Yes"
+      'Yes'
     else
       # then the player guessed incorrectly,
       # and all characters that are wearing this item
       # must have their up? property made false
       incorrect_guess(player)
-      "No"
+      'No'
     end
   end
 
   def correct_guess(player)
-    ids = []
-    @person_traits.each do |thing|
-      if thing.trait_id == @trait.id
-        ids << thing.person_id
-      end
-    end
-    target = Person.all(:id.not => ids)
-    newtarget = []
-    target.each { |x| newtarget << x.id }
-    newtarget.each do |x|
-      hit = Person.first(id: x)
-      if player == 1
-        hit.up1 = false
-      else
-        hit.up2 = false
-      end
-      hit.save
-    end
+    @targets = Person.all(:id.not => @ids)
+    flip_down(player)
   end
 
   def incorrect_guess(player)
-    ids = []
-    @person_traits.each do |thing|
-      if thing.trait_id == @trait.id
-        ids << thing.person_id
-      end
-    end
-    target = Person.all(id: ids)
-    newtarget = []
-    target.each { |x| newtarget << x.id }
-    newtarget.each do |x|
+    @targets = Person.all(id: @ids)
+    flip_down(player)
+  end
+
+  def flip_down(player)
+    people_to_flip = []
+    @targets.each { |x| people_to_flip << x.id }
+    people_to_flip.each do |x|
       hit = Person.first(id: x)
       if player == 1
         hit.up1 = false

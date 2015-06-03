@@ -1,114 +1,115 @@
 require './app/server'
 
 def test_db1
-    Crowd.create()
-    fred = Person.create(name: "Fred",
-                         crowd_id: Crowd.first.id,
-                         picture: '/images/fred.jpg')
-    boris = Person.create(name: "Boris",
-                          crowd_id: Crowd.first.id,
-                          picture: '/images/boris.jpg')
-    john = Person.create(name: "John",
-                         crowd_id: Crowd.first.id,
-                          picture: '/images/john.jpg')
-    barry = Person.create(name: "Barry",
-                          crowd_id: Crowd.first.id,
-                           picture: '/images/barry.jpg')
-    brian = Person.create(name: "Brian",
-                          crowd_id: Crowd.first.id,
-                           picture: '/images/brian.jpg')
-    hat = Trait.create(description: "Hat")
-    black_hair = Trait.create(description: "BlackHair")
-    brown_hair = Trait.create(description: "BrownHair")
-    PersonTraits.create(person_id: fred.id,
-                        trait_id: hat.id)
-    PersonTraits.create(person_id: boris.id,
-                        trait_id: hat.id)
-    PersonTraits.create(person_id: brian.id,
-                        trait_id: hat.id)
-    PersonTraits.create(person_id: brian.id,
-                        trait_id: black_hair.id)
-    PersonTraits.create(person_id: john.id,
-                        trait_id: black_hair.id)
-    PersonTraits.create(person_id: barry.id,
-                        trait_id: brown_hair.id)
+  Crowd.create
+  fred = Person.create(name: 'Fred',
+                       crowd_id: Crowd.first.id,
+                       picture: '/images/fred.jpg')
+  boris = Person.create(name: 'Boris',
+                        crowd_id: Crowd.first.id,
+                        picture: '/images/boris.jpg')
+  john = Person.create(name: 'John',
+                       crowd_id: Crowd.first.id,
+                       picture: '/images/john.jpg')
+  barry = Person.create(name: 'Barry',
+                        crowd_id: Crowd.first.id,
+                        picture: '/images/barry.jpg')
+  brian = Person.create(name: 'Brian',
+                        crowd_id: Crowd.first.id,
+                        picture: '/images/brian.jpg')
+  hat = Trait.create(description: 'Hat')
+  black_hair = Trait.create(description: 'BlackHair')
+  brown_hair = Trait.create(description: 'BrownHair')
+  PersonTraits.create(person_id: fred.id,
+                      trait_id: hat.id)
+  PersonTraits.create(person_id: boris.id,
+                      trait_id: hat.id)
+  PersonTraits.create(person_id: brian.id,
+                      trait_id: hat.id)
+  PersonTraits.create(person_id: brian.id,
+                      trait_id: black_hair.id)
+  PersonTraits.create(person_id: john.id,
+                      trait_id: black_hair.id)
+  PersonTraits.create(person_id: barry.id,
+                      trait_id: brown_hair.id)
 end
+
 def april_db
-    Crowd.create()
+    Crowd.create
 
     # april people
 
-    dan = Person.create(name: "Dan",
-                         crowd_id: Crowd.first.id,
-                         picture: '/images/dan.jpg')
-    daryl = Person.create(name: "Daryl",
-                         crowd_id: Crowd.first.id,
-                         picture: '/images/daryl.jpg')
-    fiona = Person.create(name: "Fiona",
-                         crowd_id: Crowd.first.id,
-                         picture: '/images/fiona.jpg')
-    rodney = Person.create(name: "Rodney",
-                         crowd_id: Crowd.first.id,
-                         picture: '/images/rodney.jpg')
-    mollie = Person.create(name: "Mollie",
-                         crowd_id: Crowd.first.id,
-                         picture: '/images/mollie.jpg')
-    andy = Person.create(name: "Andy",
+    dan = Person.create(name: 'Dan',
+                        crowd_id: Crowd.first.id,
+                        picture: '/images/dan.jpg')
+    daryl = Person.create(name: 'Daryl',
+                          crowd_id: Crowd.first.id,
+                          picture: '/images/daryl.jpg')
+    fiona = Person.create(name: 'Fiona',
+                          crowd_id: Crowd.first.id,
+                          picture: '/images/fiona.jpg')
+    rodney = Person.create(name: 'Rodney',
+                          crowd_id: Crowd.first.id,
+                          picture: '/images/rodney.jpg')
+    mollie = Person.create(name: 'Mollie',
+                           crowd_id: Crowd.first.id,
+                           picture: '/images/mollie.jpg')
+    andy = Person.create(name: 'Andy',
                          crowd_id: Crowd.first.id,
                          picture: '/images/andy.jpg')
-    alex = Person.create(name: "Alex",
+    alex = Person.create(name: 'Alex',
                          crowd_id: Crowd.first.id,
                          picture: '/images/alex.jpg')
-    jennifer = Person.create(name: "Jennifer",
+    jennifer = Person.create(name: 'Jennifer',
                          crowd_id: Crowd.first.id,
                          picture: '/images/jennifer.jpg')
-    ashleigh = Person.create(name: "Ashleigh",
+    ashleigh = Person.create(name: 'Ashleigh',
                          crowd_id: Crowd.first.id,
                          picture: '/images/ashleigh.jpg')
-    chidu = Person.create(name: "Chidu",
+    chidu = Person.create(name: 'Chidu',
                          crowd_id: Crowd.first.id,
                          picture: '/images/chidu.jpg')
-    timo = Person.create(name: "TimO",
+    timo = Person.create(name: 'TimO',
                          crowd_id: Crowd.first.id,
                          picture: '/images/timo.jpg')
-    charlie = Person.create(name: "Charlie",
+    charlie = Person.create(name: 'Charlie',
                          crowd_id: Crowd.first.id,
                          picture: '/images/charlie.jpg')
-    timr = Person.create(name: "TimR",
+    timr = Person.create(name: 'TimR',
                          crowd_id: Crowd.first.id,
                          picture: '/images/timr.jpg')
-    daniel = Person.create(name: "Daniel",
+    daniel = Person.create(name: 'Daniel',
                          crowd_id: Crowd.first.id,
                          picture: '/images/daniel.jpg')
-    stefan = Person.create(name: "Stefan",
-                         crowd_id: Crowd.first.id,
-                         picture: '/images/stefan.jpg')
-    ben = Person.create(name: "Ben",
-                         crowd_id: Crowd.first.id,
-                         picture: '/images/ben.jpg')
+    stefan = Person.create(name: 'Stefan',
+                           crowd_id: Crowd.first.id,
+                           picture: '/images/stefan.jpg')
+    ben = Person.create(name: 'Ben',
+                        crowd_id: Crowd.first.id,
+                        picture: '/images/ben.jpg')
 
     # types of traits
 
-    male = Trait.create(description: "Male")
-    female = Trait.create(description: "Female")
-    silly_face = Trait.create(description: "SillyFace")
-    beard = Trait.create(description: "Beard")
-    stubble = Trait.create(description: "Stubble")
-    clean_shaven = Trait.create(description: "CleanShaven")
-    glasses = Trait.create(description: "Glasses")
-    black_hair = Trait.create(description: "BlackHair")
-    brown_hair = Trait.create(description: "BrownHair")
-    blonde_hair = Trait.create(description: "BlondeHair")
-    long_hair = Trait.create(description: "LongHair")
-    short_hair = Trait.create(description: "ShortHair")
-    curly_hair = Trait.create(description: "CurlyHair")
-    light_top = Trait.create(description: "LightTop")
-    blue_top = Trait.create(description: "BlueTop")
-    dark_top = Trait.create(description: "DarkTop")
-    checkered_top = Trait.create(description: "CheckeredTop")
-    chidu_top = Trait.create(description: "ChiduTop")
-    necklace = Trait.create(description: "Necklace")
-    cigarette = Trait.create(description: "Cigarette")
+    male = Trait.create(description: 'Male')
+    female = Trait.create(description: 'Female')
+    silly_face = Trait.create(description: 'SillyFace')
+    beard = Trait.create(description: 'Beard')
+    stubble = Trait.create(description: 'Stubble')
+    clean_shaven = Trait.create(description: 'CleanShaven')
+    glasses = Trait.create(description: 'Glasses')
+    black_hair = Trait.create(description: 'BlackHair')
+    brown_hair = Trait.create(description: 'BrownHair')
+    blonde_hair = Trait.create(description: 'BlondeHair')
+    long_hair = Trait.create(description: 'LongHair')
+    short_hair = Trait.create(description: 'ShortHair')
+    curly_hair = Trait.create(description: 'CurlyHair')
+    light_top = Trait.create(description: 'LightTop')
+    blue_top = Trait.create(description: 'BlueTop')
+    dark_top = Trait.create(description: 'DarkTop')
+    checkered_top = Trait.create(description: 'CheckeredTop')
+    chidu_top = Trait.create(description: 'ChiduTop')
+    necklace = Trait.create(description: 'Necklace')
+    cigarette = Trait.create(description: 'Cigarette')
 
     # Dan's traits
 
@@ -343,5 +344,4 @@ def april_db
                         trait_id: silly_face.id)
     PersonTraits.create(person_id: ben.id,
                         trait_id: blue_top.id)
-
 end
