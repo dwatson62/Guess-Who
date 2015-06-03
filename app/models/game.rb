@@ -7,10 +7,9 @@ require 'byebug'
 
 class Game
 
-  attr_reader :character, :crowd
+  attr_reader :character
 
   def initialize
-    @crowd = Person.all
     @person_traits = PersonTraits.all
   end
 
@@ -21,11 +20,15 @@ class Game
     end
   end
 
-  def show_all
-    @crowd = Person.all(crowd_id: Crowd.first.id, up: true)
+  def show_all(player)
+    if player == 1
+      Person.all(up1: true)
+    else
+      Person.all(up2: true)
+    end
   end
 
-  def ask(item)
+  def ask(item, player)
     id = character.id
     @trait = Trait.first(description: item)
     person = PersonTraits.first(person_id: id, trait_id: @trait.id)
@@ -33,18 +36,18 @@ class Game
       # then the player guessed correctly,
       # and all characters not wearing this item
       # must have their up? property made false
-      correct_guess
+      correct_guess(player)
       "Yes"
     else
       # then the player guessed incorrectly,
       # and all characters that are wearing this item
       # must have their up? property made false
-      incorrect_guess
+      incorrect_guess(player)
       "No"
     end
   end
 
-  def correct_guess
+  def correct_guess(player)
     ids = []
     @person_traits.each do |thing|
       if thing.trait_id == @trait.id
@@ -56,12 +59,16 @@ class Game
     target.each { |x| newtarget << x.id }
     newtarget.each do |x|
       hit = Person.first(id: x)
-      hit.up = false
+      if player == 1
+        hit.up1 = false
+      else
+        hit.up2 = false
+      end
       hit.save
     end
   end
 
-  def incorrect_guess
+  def incorrect_guess(player)
     ids = []
     @person_traits.each do |thing|
       if thing.trait_id == @trait.id
@@ -73,7 +80,11 @@ class Game
     target.each { |x| newtarget << x.id }
     newtarget.each do |x|
       hit = Person.first(id: x)
-      hit.up = false
+      if player == 1
+        hit.up1 = false
+      else
+        hit.up2 = false
+      end
       hit.save
     end
   end

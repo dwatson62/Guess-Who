@@ -8,7 +8,8 @@ class Person
   # This block describes what resources our model will have
   property :id,     Serial # Serial means that it will be auto-incremented for every record
   property :name,         String
-  property :up?, Boolean, :default => true
+  property :up1?, Boolean, :default => true
+  property :up2?, Boolean, :default => true
   property :picture, String
 
   has n, :traits, through: Resource

@@ -51,12 +51,9 @@ task :populate do
     brian = Person.create(name: "Brian",
                           crowd_id: Crowd.first.id,
                            picture: '/images/brian.jpg')
-    hat = Trait.create(description: "Hat",
-                       answer: "Yes",)
-    black_hair = Trait.create(description: "BlackHair",
-                              answer: "Yes",)
-    brown_hair = Trait.create(description: "BrownHair",
-                              answer: "Yes",)
+    hat = Trait.create(description: "Hat")
+    black_hair = Trait.create(description: "BlackHair")
+    brown_hair = Trait.create(description: "BrownHair")
     PersonTraits.create(person_id: fred.id,
                         trait_id: hat.id)
     PersonTraits.create(person_id: boris.id,
