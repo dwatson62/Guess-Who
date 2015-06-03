@@ -3,7 +3,7 @@ require 'data_mapper'
 require 'rack-flash'
 require 'byebug'
 require 'database_cleaner'
-require './spec/features/helpers'
+require './crowd_data'
 
 require_relative 'data_mapper_setup'
 
@@ -19,7 +19,7 @@ set :session_secret, 'super secret'
 enable :sessions
 
 get '/' do
-  test_db1
+  test_db2
   Player.create
   Player.create
   erb :index
@@ -123,6 +123,7 @@ delete '/startagain' do
   DatabaseCleaner.start
   redirect to '/'
 end
+
 
 # start the server if ruby file executed directly
 # run! if app_file == $0

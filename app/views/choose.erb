@@ -1,11 +1,14 @@
-Please select a character
+<h1>Please select a character</h1>
 <br>
 
-<form method='post' action='/'>
-<% @people.each do |person| %>
-  <img src=<%= person.picture%> height='100' width='100'>
-  <br>
-  <button class="btn btn-primary" type='submit' name='character' value=<%= person.name%>><%= person.name%></button>
-  <br>
-  <% end %>
-</form>
+<div class="container-fluid" >
+  <form method='post' action='/' class='form-inline'>
+    <% @people.each do |person| %>
+      <div class="row">
+        <div id='<%= person.name %>'>
+          <button class="btn btn-primary" type='submit' name='character' value=<%= person.name%>><img src=<%= person.picture%> height='100' width='100'></button>
+        </div>
+      </div>
+    <% end %>
+  </form>
+</div>

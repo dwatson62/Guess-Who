@@ -1,48 +1,88 @@
-<% if @result %>
-  <%= @result %>
-<% else %>
-  <%= @answer %>
-<% end %>
-<br>
-Player 1
-<% @people1.each do |person| %>
-  <img src=<%= person.picture%> height='100' width='100'>
+<h3>
+  <% if @result %>
+    <%= @result %>
+  <% else %>
+    <%= @answer %>
+  <% end %>
   <br>
-  <%= person.name %>
-  <br>
-<% end %>
-<br>
-Player 2
-<% @people2.each do |person| %>
-  <img src=<%= person.picture%> height='100' width='100'>
-  <br>
-  <%= person.name %>
-  <br>
-<% end %>
+</h3>
 
-Ask a question, player <%= @player_turn %>:
-<form method='post' action='/game'>
-  <select name='questions'>
-    <% @traits.each do |item| %>
-      <option value=<%= item.description %>><%= item.description %></option>
+<div class="row">
+  <div class="col-md-4"><h4>Player 1</h4>
+    <br>
+    <% @people1.each do |person| %>
+      <img src=<%= person.picture%> height='100' width='100'>
+    <br>
+      <%= person.name %>
+      <br>
     <% end %>
-  </select>
-  <button class="btn btn-primary" type='submit' value='Ask'>Ask</button>
-</form>
-<br>
-Or have a guess:
+    <br>
+  </div>
+  <div class="col-md-4">
+    <h3>Ask a question, player <%= @player_turn %>:</h3>
+    <form method='post' action='/game'>
+      <select name='questions'>
+        <% @traits.each do |item| %>
+          <option value=<%= item.description %>><%= item.description %></option>
+        <% end %>
+      </select>
+      <br>
+      <br>
+      <button class="btn btn-primary" type='submit' value='Ask'>Ask</button>
+    </form>
+    <br>
+    <h3>Or have a guess:</h3>
+    <form method='post' action='/guess'>
+      <select name='guess_person'>
+        <% if @player_turn == 1 %>
+          <% @people1.each do |person| %>
+            <option value=<%= person.name %>><%= person.name %></option>
+        <% end %>
+        <% else %>
+          <% @people2.each do |person| %>
+            <option value=<%= person.name %>><%= person.name %></option>
+        <% end %>
+        <% end %>
+      </select>
+      <br>
+      <br>
+      <button class="btn btn-primary" type='submit' value='Guess'>Guess</button>
+    </form>
+  </div>
+  <div class="col-md-4"><h4>Player 2</h4>
+    <br>
+    <% @people2.each do |person| %>
+      <img src=<%= person.picture%> height='100' width='100'>
+       <br>
+      <%= person.name %>
+      <br>
+    <% end %>
+    <br>
+  </div>
+</div>
 
-<form method='post' action='/guess'>
-  <select name='guess_person'>
-    <% if @player_turn == 1 %>
-      <% @people1.each do |person| %>
-        <option value=<%= person.name %>><%= person.name %></option>
-    <% end %>
-    <% else %>
-      <% @people2.each do |person| %>
-        <option value=<%= person.name %>><%= person.name %></option>
-    <% end %>
-    <% end %>
-  </select>
-  <button class="btn btn-primary" type='submit' value='Guess'>Guess</button>
-</form>
+
+
+<!-- <div class="row">
+  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">.col-md-1</div>
+</div>
+<div class="row">
+  <div class="col-md-8">.col-md-8</div>
+  <div class="col-md-4">.col-md-4</div>
+</div>
+<div class="row">
+  <div class="col-md-4">.col-md-4</div>
+  <div class="col-md-4">.col-md-4</div>
+  <div class="col-md-4">.col-md-4</div>
+</div> -->

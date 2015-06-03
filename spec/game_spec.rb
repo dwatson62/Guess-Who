@@ -1,5 +1,4 @@
 require './app/server'
-require 'features/helpers'
 require 'byebug'
 
 describe Game do

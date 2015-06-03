@@ -1,5 +1,4 @@
 require './app/server'
-require_relative 'helpers'
 
 feature 'Player 1' do
 

@@ -1,5 +1,4 @@
 require './app/server'
-require_relative 'helpers'
 
 feature 'Each player' do
   scenario 'chooses a character' do

@@ -1,11 +1,16 @@
-Guess Who
+<img src='/images/title.jpg' height='300' width='300'>
+<br>
+<br>
+<h4>By Daryl Watson</h4>
 <br>
 <% if @character1 %>
   Player 1 chose <%= @character1.name %>
-  <a href='/choose'><button class="btn btn-primary">Player 2</button></a>
+  <br>
+  <a href='/choose'><button class="btn btn-primary">Player 2 Start</button></a>
 <% elsif @character2 %>
   Player 2 chose <%= @character2.name %>
+  <br>
   <a href='/game'><button class="btn btn-primary">Play</button></a>
 <% else %>
-  <a href='/choose'><button class="btn btn-primary">Player 1</button></a>
+  <a href='/choose'><button class="btn btn-primary">Player 1 Start</button></a>
 <% end %>
