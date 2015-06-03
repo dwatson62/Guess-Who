@@ -91,9 +91,9 @@ get '/win' do
 end
 
 delete '/startagain' do
-  DatabaseCleaner.strategy = :transaction
-  DatabaseCleaner.clean_with(:truncation)
-  DatabaseCleaner.start
+  # DatabaseCleaner.strategy = :transaction
+  # DatabaseCleaner.clean_with(:truncation)
+  # DatabaseCleaner.start
   redirect to '/'
 end
 

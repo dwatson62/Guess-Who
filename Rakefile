@@ -33,3 +33,21 @@ task :database_cleaner do
   DatabaseCleaner.start
   puts 'Database cleaned'
 end
+
+task :populate_local do
+  env = ENV['RACK_ENV]'] || 'development'
+  DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://localhost/guesswho_#{env}")
+  require './crowd_data'
+  april_db
+end
+
+task :populate_remote do
+  DataMapper.setup(:default,  "postgres://qekcokqxsmmhyx:U6D6ctPM8ou3sXJqkugBEt26Z1@ec2-54-197-224-173.compute-1.amazonaws.com:5432/d9t0v2bnqu246p")
+
+  DataMapper.finalize
+
+  DataMapper.auto_upgrade!
+
+  require './crowd_data'
+  april_db
+end
