@@ -33,7 +33,7 @@ def test_db1
     PersonTraits.create(person_id: barry.id,
                         trait_id: brown_hair.id)
 end
-def test_db2
+def april_db
     Crowd.create()
 
     # april people

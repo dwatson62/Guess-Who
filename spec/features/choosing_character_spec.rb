@@ -4,7 +4,6 @@ feature 'Each player' do
   scenario 'chooses a character' do
     test_db1
     visit '/'
-    expect(page).to have_content("Guess Who")
     click_link 'Player 1'
     expect(page).to have_content('Please select a character')
     click_button 'Fred'

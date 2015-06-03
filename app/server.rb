@@ -19,7 +19,7 @@ set :session_secret, 'super secret'
 enable :sessions
 
 get '/' do
-  test_db2
+  # april_db
   Player.create
   Player.create
   erb :index

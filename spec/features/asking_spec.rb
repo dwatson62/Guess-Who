@@ -1,14 +1,11 @@
 require './app/server'
 
-feature 'Player 1' do
-
-  before(:each) do
-    test_db1
-  end
+feature 'Playing the game' do
 
   context 'players choose Fred and Boris' do
 
   before(:each) do
+    test_db1
     visit '/'
     click_link 'Player 1'
     click_button 'Fred'
@@ -42,6 +39,7 @@ feature 'Player 1' do
   context 'players choose John and Boris' do
 
     before(:each) do
+      test_db1
       visit '/'
       click_link 'Player 1'
       click_button 'John'
