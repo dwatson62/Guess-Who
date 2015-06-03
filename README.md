@@ -5,7 +5,7 @@ Guess Who
 
 My project for Lab Week is to recreate Guess Who online, using the April cohort as the characters. This is to practice Ruby backend skills and database management.
 
-![Guess Who](/images/title.jpg)
+![Guess Who](http://stayonfountain.com/wp-content/uploads/2011/01/guess-who.jpg)
 
 ## Technologies Used
 
