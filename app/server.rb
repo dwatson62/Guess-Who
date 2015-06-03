@@ -19,7 +19,7 @@ set :session_secret, 'super secret'
 
 get '/' do
   # april_db
-  2.times { Player.create }
+  # 2.times { Player.create }
   erb :index
 end
 

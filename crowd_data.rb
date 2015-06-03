@@ -36,7 +36,8 @@ end
 
 def april_db
     Crowd.create
-
+    Player.create
+    Player.create
     # april people
 
     dan = Person.create(name: 'Dan',
