@@ -43,7 +43,8 @@ end
 
 get '/game' do
   @traits = Trait.all
-  @people = Person.all(up1: true)
+  @game = Game.new
+  @people = @game.show_all(1)
   session[:player_turn] = 1
   @player_turn = session[:player_turn]
   erb :game
@@ -59,14 +60,14 @@ post '/game' do
     character = Person.first(id: character.person_id)
     @game.choose(character.name)
     @answer = @game.ask(question, 1)
-    @people = Person.all(up1: true)
+    @people = @game.show_all(1)
     session[:player_turn] = 2
   else
     character = PersonPlayer.first
     character = Person.first(id: character.person_id)
     @game.choose(character.name)
     @answer = @game.ask(question, 2)
-    @people = Person.all(up2: true)
+    @people = @game.show_all(2)
     session[:player_turn] = 1
   end
   @player_turn = session[:player_turn]
@@ -83,14 +84,14 @@ post '/guess' do
     character = Person.first(id: character.person_id)
     @game.choose(character.name)
     @result = @game.is_it(guess)
-    @people = Person.all(up2: true)
+    @people = @game.show_all(1)
     session[:player_turn] = 2
   else
     character = PersonPlayer.first
     character = Person.first(id: character.person_id)
     @game.choose(character.name)
     @result = @game.is_it(guess)
-    @people = Person.all(up2: true)
+    @people = @game.show_all(2)
     session[:player_turn] = 1
   end
   @player_turn = session[:player_turn]

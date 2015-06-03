@@ -137,34 +137,20 @@ describe Game do
 
   end
 
-  xcontext 'player chooses Brian' do
+  context 'player chooses Brian' do
 
-    context 'and asks if he has brown hair, then black hair' do
-
-      it 'and the crowd will be reduced correctly' do
-        subject.choose('Brian')
-        expect(subject.character.name).to eq("Brian")
-        subject.ask('BrownHair')
-        expect(subject.show_all.length).to eq 4
-        subject.ask('BlackHair')
-        expect(subject.show_all.length).to eq 2
-      end
-
+    it 'and asks if he has brown hair' do
+      subject.choose('Brian')
+      expect(subject.character.name).to eq("Brian")
+      subject.ask('BrownHair', 1)
+      expect(subject.show_all(1).length).to eq 4
     end
 
-    xcontext 'and asks if he has a hat, then brown hair, then black hair' do
-
-      it 'and the crowd will be reduced correctly' do
-        subject.choose('Brian')
-        expect(subject.character.name).to eq("Brian")
-        subject.ask('Hat')
-        expect(subject.show_all.length).to eq 3
-        subject.ask('BrownHair')
-        expect(subject.show_all.length).to eq 3
-        subject.ask('BlackHair')
-        expect(subject.show_all.length).to eq 1
-      end
-
+    it 'and asks if he has a hat' do
+      subject.choose('Brian')
+      expect(subject.character.name).to eq("Brian")
+      subject.ask('Hat', 1)
+      expect(subject.show_all(1).length).to eq 3
     end
 
   end
