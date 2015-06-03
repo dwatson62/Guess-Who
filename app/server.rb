@@ -2,6 +2,8 @@ require "sinatra"
 require 'data_mapper'
 require 'rack-flash'
 require 'byebug'
+require 'database_cleaner'
+require './spec/features/helpers'
 
 require_relative 'data_mapper_setup'
 
@@ -13,9 +15,11 @@ use Rack::MethodOverride
 #tells you where your views are..
 set :views, Proc.new { File.join(root, "", "views") }
 set :public_folder, 'public'
+set :session_secret, 'super secret'
 enable :sessions
 
 get '/' do
+  test_db1
   Player.create
   Player.create
   erb :index
@@ -44,14 +48,14 @@ end
 get '/game' do
   @traits = Trait.all
   @game = Game.new
-  @people = @game.show_all(1)
+  @people1 = @game.show_all(1)
+  @people2 = @game.show_all(2)
   session[:player_turn] = 1
   @player_turn = session[:player_turn]
   erb :game
 end
 
 post '/game' do
-  # byebug
   question = params[:questions]
   @traits = Trait.all
   @game = Game.new
@@ -60,14 +64,16 @@ post '/game' do
     character = Person.first(id: character.person_id)
     @game.choose(character.name)
     @answer = @game.ask(question, 1)
-    @people = @game.show_all(1)
+    @people1 = @game.show_all(1)
+    @people2 = @game.show_all(2)
     session[:player_turn] = 2
   else
     character = PersonPlayer.first
     character = Person.first(id: character.person_id)
     @game.choose(character.name)
     @answer = @game.ask(question, 2)
-    @people = @game.show_all(2)
+    @people1 = @game.show_all(1)
+    @people2 = @game.show_all(2)
     session[:player_turn] = 1
   end
   @player_turn = session[:player_turn]
@@ -75,7 +81,6 @@ post '/game' do
 end
 
 post '/guess' do
-  # byebug
   guess = params[:guess_person]
   @traits = Trait.all
   @game = Game.new
@@ -84,18 +89,28 @@ post '/guess' do
     character = Person.first(id: character.person_id)
     @game.choose(character.name)
     @result = @game.is_it(guess)
-    @people = @game.show_all(1)
+    @people1 = @game.show_all(1)
+    @people2 = @game.show_all(2)
     session[:player_turn] = 2
   else
     character = PersonPlayer.first
     character = Person.first(id: character.person_id)
     @game.choose(character.name)
     @result = @game.is_it(guess)
-    @people = @game.show_all(2)
+    @people1 = @game.show_all(1)
+    @people2 = @game.show_all(2)
     session[:player_turn] = 1
   end
   @player_turn = session[:player_turn]
   erb :game
+end
+
+delete '/startagain' do
+  session[:player_turn] = nil
+  DatabaseCleaner.strategy = :transaction
+  DatabaseCleaner.clean_with(:truncation)
+  DatabaseCleaner.start
+  redirect to '/'
 end
 
 # start the server if ruby file executed directly
