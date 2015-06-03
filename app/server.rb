@@ -24,17 +24,19 @@ get '/' do
     x.up2 = true
     x.save
   end
+  Player.all.destroy
+  PersonPlayer.all.destroy
   erb :index
 end
 
 post '/' do
   if PersonPlayer.count == 0
-    player = Player.first
+    player = Player.create
     @character1 = Person.first(name: params[:character])
     PersonPlayer.create(player_id: player.id,
                         person_id: @character1.id)
   else
-    player = Player.last
+    player = Player.create
     @character2 = Person.first(name: params[:character])
     PersonPlayer.create(player_id: player.id,
                         person_id: @character2.id)

@@ -65,6 +65,8 @@ task :reset_local do
     x.up2 = true
     x.save
   end
+  Player.all.destroy
+  PersonPlayer.all.destroy
 end
 
 task :reset_remote do
@@ -80,4 +82,7 @@ task :reset_remote do
     x.up2 = true
     x.save
   end
+  Player.all.destroy
+  PersonPlayer.all.destroy
+
 end
