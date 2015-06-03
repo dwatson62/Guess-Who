@@ -3,40 +3,19 @@ Guess Who
 
 ## Synopsis
 
-Creating Guess Who for Lab Week!
+My project for Lab Week is to recreate Guess Who online, using the April cohort as the characters. This is to practice Ruby backend skills and database management.
 
-![NAME_OF_IMAGE](http://ENTER_URL)
+![Guess Who](/images/title.jpg)
 
 ## Technologies Used
 
-- LANGUAGE_ONE
-- LANGUAGE_TWO
-- FRAMEWORK
-- TESTING SUITES
+- Ruby
+- Datamapper, Postgres PSQL
+- Sinatra
+- Rspec, Capybara
 
 ## Job List
 
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-
-## Favourite Code Snippet
-
-~~~
- TODO: paste code here
-~~~
-
-## Collaborators
-
-- Tim O
-- Daryl
-
-## Still to complete/refactor
-
-- [ ]
-- [ ]
-
-## Takeaway
-
-TODO: Enter a personal reflection and/or things you learnt
+- Want to improve the style and look of the game
+- Need to edit the database code so that the game can work in production
+- Add the rest of the cohort
