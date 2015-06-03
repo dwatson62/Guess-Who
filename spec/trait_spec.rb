@@ -9,14 +9,12 @@ describe Trait do
     end
 
     it 'should be able to create a hat trait' do
-      trait = Trait.create(description: "Hat",
-                           answer: "Yes")
+      trait = Trait.create(description: "Hat")
       expect(Trait.count).to eq(1)
     end
 
     it 'should be able to create a hair colour trait' do
-      trait = Trait.create(description: "Hair Colour",
-                           answer: "Black")
+      trait = Trait.create(description: "Hair Colour")
       expect(Trait.count).to eq(1)
     end
 

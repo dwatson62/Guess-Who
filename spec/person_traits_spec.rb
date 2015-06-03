@@ -7,8 +7,7 @@ describe PersonTraits do
       person = Person.create(name: "Fred",
                              crowd_id: april.id,
                               picture: '/images/fred.jpg')
-      hat = Trait.create(description: "Hat",
-                   answer: "Yes",)
+      hat = Trait.create(description: "Hat")
       PersonTraits.create(person_id: person.id,
                           trait_id: hat.id)
       expect(PersonTraits.count).to eq 1

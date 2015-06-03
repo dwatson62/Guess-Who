@@ -44,35 +44,56 @@ end
 get '/game' do
   @traits = Trait.all
   @people = Person.all(up1: true)
+  session[:player_turn] = 1
+  @player_turn = session[:player_turn]
   erb :game
 end
 
 post '/game' do
   # byebug
-  @game = Game.new
-  @player1 = Player.first
-  character = PersonPlayer.first(player_id: @player1.id)
-  character = Person.first(id: character.person_id)
-  @game.choose(character.name)
-
   question = params[:questions]
-  @answer = @game.ask(question)
   @traits = Trait.all
-  @people = Person.all(up: true)
+  @game = Game.new
+  if session[:player_turn] == 1
+    character = PersonPlayer.last
+    character = Person.first(id: character.person_id)
+    @game.choose(character.name)
+    @answer = @game.ask(question, 1)
+    @people = Person.all(up1: true)
+    session[:player_turn] = 2
+  else
+    character = PersonPlayer.first
+    character = Person.first(id: character.person_id)
+    @game.choose(character.name)
+    @answer = @game.ask(question, 2)
+    @people = Person.all(up2: true)
+    session[:player_turn] = 1
+  end
+  @player_turn = session[:player_turn]
   erb :game
 end
 
 post '/guess' do
   # byebug
   guess = params[:guess_person]
-  @game = Game.new
-  @player1 = Player.first
-  character = PersonPlayer.first(player_id: @player1.id)
-  character = Person.first(id: character.person_id)
-  @game.choose(character.name)
-  @result = @game.is_it(guess)
   @traits = Trait.all
-  @people = Person.all(up: true)
+  @game = Game.new
+  if session[:player_turn] == 1
+    character = PersonPlayer.last
+    character = Person.first(id: character.person_id)
+    @game.choose(character.name)
+    @result = @game.is_it(guess)
+    @people = Person.all(up2: true)
+    session[:player_turn] = 2
+  else
+    character = PersonPlayer.first
+    character = Person.first(id: character.person_id)
+    @game.choose(character.name)
+    @result = @game.is_it(guess)
+    @people = Person.all(up2: true)
+    session[:player_turn] = 1
+  end
+  @player_turn = session[:player_turn]
   erb :game
 end
 

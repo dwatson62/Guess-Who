@@ -32,5 +32,4 @@ def test_db1
                         trait_id: black_hair.id)
     PersonTraits.create(person_id: barry.id,
                         trait_id: brown_hair.id)
-    puts "Development database populated with test data"
 end

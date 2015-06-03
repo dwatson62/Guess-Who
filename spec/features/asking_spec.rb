@@ -19,25 +19,23 @@ feature 'Player 1' do
   end
 
     scenario 'player 1 asks if he has a hat and get a yes answer' do
-      expect(page).to have_content("Ask a question:")
+      expect(page).to have_content("Ask a question, player 1:")
       select 'Hat', from: 'questions'
       click_button 'Ask'
-      # John and Barry disappear
       expect(page).to have_content 'Yes'
-      expect(Person.all(up: true).length).to eq 3
+      expect(Person.all(up1: true).length).to eq 3
     end
 
-    scenario 'player 1 asks if he has a hat and then black hair, and gets a yes then a no' do
-      expect(page).to have_content("Ask a question:")
+    scenario 'player 1 asks "hat", player 2 then asks if he has black hair and gets a no' do
+      expect(page).to have_content("Ask a question, player 1:")
       select 'Hat', from: 'questions'
       click_button 'Ask'
-      # John and Barry disappear
       expect(page).to have_content 'Yes'
+      expect(page).to have_content("Ask a question, player 2:")
       select 'BlackHair', from: 'questions'
       click_button 'Ask'
-      # Fred and Boris remain
       expect(page).to have_content 'No'
-      expect(Person.all(up: true).length).to eq 2
+      expect(Person.all(up2: true).length).to eq 3
     end
 
   end
@@ -53,22 +51,23 @@ feature 'Player 1' do
       click_link 'Play'
     end
 
-    scenario 'asks if they have a hat and get a no answer' do
-      expect(page).to have_content("Ask a question:")
-      select 'Hat', from: 'questions'
+    scenario 'player 1 asks if he has brown hair and gets a no answer' do
+      expect(page).to have_content("Ask a question, player 1:")
+      select 'BrownHair', from: 'questions'
       click_button 'Ask'
-      # Fred, Boris and Brian disappear
       expect(page).to have_content 'No'
-      expect(Person.all(up: true).length).to eq 2
+      expect(Person.all(up1: true).length).to eq 4
     end
 
-    scenario 'asks if they have black hair and get a yes answer' do
-      expect(page).to have_content("Ask a question:")
+    scenario 'player 1 asks "brown hair", player 2 then asks if he has black hair and gets a yes' do
+      expect(page).to have_content("Ask a question, player 1:")
+      select 'BrownHair', from: 'questions'
+      click_button 'Ask'
+      expect(page).to have_content("Ask a question, player 2:")
       select 'BlackHair', from: 'questions'
       click_button 'Ask'
-      # Fred, Boris and Barry disappear
       expect(page).to have_content 'Yes'
-      expect(Person.all(up: true).length).to eq 2
+      expect(Person.all(up2: true).length).to eq 2
     end
 
   end

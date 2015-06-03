@@ -9,7 +9,7 @@
   <br>
 <% end %>
 
-Ask a question:
+Ask a question, player <%= @player_turn %>:
 <form method='post' action='/game'>
   <select name='questions'>
     <% @traits.each do |item| %>

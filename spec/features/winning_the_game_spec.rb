@@ -19,18 +19,18 @@ feature 'Player 1' do
   end
 
     scenario 'player 1 guesses Fred and wins the game' do
+      expect(page).to have_content("Ask a question, player 1:")
       expect(page).to have_content("Or have a guess:")
-      select 'Fred', from: 'guess_person'
+      select 'Boris', from: 'guess_person'
       click_button 'Guess'
-      # John and Barry disappear
       expect(page).to have_content 'You win!'
     end
 
     scenario 'player 1 guesses Boris and does not win the game' do
+      expect(page).to have_content("Ask a question, player 1:")
       expect(page).to have_content("Or have a guess:")
-      select 'Boris', from: 'guess_person'
+      select 'Fred', from: 'guess_person'
       click_button 'Guess'
-      # John and Barry disappear
       expect(page).to have_content 'Try again!'
     end
 
