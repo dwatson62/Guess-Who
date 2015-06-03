@@ -81,32 +81,33 @@ post '/game' do
 end
 
 post '/guess' do
-  guess = params[:guess_person]
-  @traits = Trait.all
+  # byebug
   @game = Game.new
   if session[:player_turn] == 1
     character = PersonPlayer.last
     character = Person.first(id: character.person_id)
     @game.choose(character.name)
-    @result = @game.is_it(guess)
-    if @result == 'You win!'
-      redirect to '/win'
-    end
-    @people1 = @game.show_all(1)
-    @people2 = @game.show_all(2)
-    session[:player_turn] = 2
+    @result = @game.is_it(params[:guess_person], 1)
   else
     character = PersonPlayer.first
     character = Person.first(id: character.person_id)
     @game.choose(character.name)
-    @result = @game.is_it(guess)
-    if @result == 'You win!'
-      redirect to '/win'
-    end
-    @people1 = @game.show_all(1)
-    @people2 = @game.show_all(2)
+    @result = @game.is_it(params[:guess_person], 2)
+  end
+
+  if @result == 'You win!'
+    redirect to '/win'
+  end
+
+  if session[:player_turn] == 1
+    session[:player_turn] = 2
+  else
     session[:player_turn] = 1
   end
+
+  @traits = Trait.all
+  @people1 = @game.show_all(1)
+  @people2 = @game.show_all(2)
   @player_turn = session[:player_turn]
   erb :game
 end
@@ -117,7 +118,6 @@ get '/win' do
 end
 
 delete '/startagain' do
-  session[:player_turn] = nil
   DatabaseCleaner.strategy = :transaction
   DatabaseCleaner.clean_with(:truncation)
   DatabaseCleaner.start

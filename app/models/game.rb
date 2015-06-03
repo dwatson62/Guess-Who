@@ -89,12 +89,18 @@ class Game
     end
   end
 
-  def is_it(person)
+  def is_it(person, player)
     guess = Person.first(name: person)
     if guess.name == character.name
       # the player guessed correctly and wins
       'You win!'
     else
+      if player == 1
+        guess.up1 = false
+      else
+        guess.up2 = false
+      end
+      guess.save
       'Try again!'
     end
   end

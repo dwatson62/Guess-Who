@@ -59,7 +59,7 @@ def april_db
     alex = Person.create(name: "Alex",
                          crowd_id: Crowd.first.id,
                          picture: '/images/alex.jpg')
-    jennifer = Person.create(name: "jennifer",
+    jennifer = Person.create(name: "Jennifer",
                          crowd_id: Crowd.first.id,
                          picture: '/images/jennifer.jpg')
     ashleigh = Person.create(name: "Ashleigh",
@@ -83,6 +83,9 @@ def april_db
     stefan = Person.create(name: "Stefan",
                          crowd_id: Crowd.first.id,
                          picture: '/images/stefan.jpg')
+    ben = Person.create(name: "Ben",
+                         crowd_id: Crowd.first.id,
+                         picture: '/images/ben.jpg')
 
     # types of traits
 
@@ -100,8 +103,6 @@ def april_db
     short_hair = Trait.create(description: "ShortHair")
     curly_hair = Trait.create(description: "CurlyHair")
     light_top = Trait.create(description: "LightTop")
-    blue_top = Trait.create(description: "BlueTop")
-    green_top = Trait.create(description: "GreenTop")
     blue_top = Trait.create(description: "BlueTop")
     dark_top = Trait.create(description: "DarkTop")
     checkered_top = Trait.create(description: "CheckeredTop")
@@ -163,7 +164,7 @@ def april_db
     PersonTraits.create(person_id: rodney.id,
                         trait_id: necklace.id)
     PersonTraits.create(person_id: rodney.id,
-                        trait_id: green_top.id)
+                        trait_id: blue_top.id)
     PersonTraits.create(person_id: rodney.id,
                         trait_id: silly_face.id)
 
@@ -326,6 +327,21 @@ def april_db
     PersonTraits.create(person_id: stefan.id,
                         trait_id: short_hair.id)
     PersonTraits.create(person_id: stefan.id,
+                        trait_id: blue_top.id)
+
+    # Ben's traits
+
+    PersonTraits.create(person_id: ben.id,
+                        trait_id: male.id)
+    PersonTraits.create(person_id: ben.id,
+                        trait_id: stubble.id)
+    PersonTraits.create(person_id: ben.id,
+                        trait_id: short_hair.id)
+    PersonTraits.create(person_id: ben.id,
+                        trait_id: brown_hair.id)
+    PersonTraits.create(person_id: ben.id,
+                        trait_id: silly_face.id)
+    PersonTraits.create(person_id: ben.id,
                         trait_id: blue_top.id)
 
 end

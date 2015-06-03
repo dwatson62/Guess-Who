@@ -158,12 +158,17 @@ describe Game do
 
     it 'and win the game' do
       subject.choose('Fred')
-      expect(subject.is_it('Fred')).to eq "You win!"
+      expect(subject.is_it('Fred', 1)).to eq "You win!"
     end
 
     it 'but if they guess wrong they do not win' do
       subject.choose('Fred')
-      expect(subject.is_it('Boris')).to eq "Try again!"
+      expect(subject.is_it('Boris', 1)).to eq "Try again!"
+    end
+    it 'an that character is eliminated from the game' do
+      subject.choose('Fred')
+      expect(subject.is_it('Boris', 1))
+      expect(subject.show_all(1).length).to eq 4
     end
   end
 end
