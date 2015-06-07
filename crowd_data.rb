@@ -112,237 +112,100 @@ def april_db
     necklace = Trait.create(description: 'Necklace')
     cigarette = Trait.create(description: 'Cigarette')
 
-    # Dan's traits
 
-    PersonTraits.create(person_id: dan.id,
-                        trait_id: male.id)
-    PersonTraits.create(person_id: dan.id,
-                        trait_id: glasses.id)
-    PersonTraits.create(person_id: dan.id,
-                        trait_id: beard.id)
-    PersonTraits.create(person_id: dan.id,
-                        trait_id: light_top.id)
-    PersonTraits.create(person_id: dan.id,
-                        trait_id: brown_hair.id)
-    PersonTraits.create(person_id: dan.id,
-                        trait_id: short_hair.id)
+    male_group = [dan, daryl, rodney, andy, alex, chidu, timo, charlie, timr, daniel, stefan, ben]
+    female_group = [mollie, jennifer, ashleigh, fiona]
+    silly_face_group = [rodney, ashleigh, charlie, daniel, ben]
+    beard_group = [dan, rodney]
+    stubble_group = [dan, andy, alex, timo, charlie, timr, daniel, stefan, ben]
+    clean_shaven_group = [daryl, fiona, mollie, jennifer, ashleigh, chidu]
+    glasses_group = [dan, mollie, andy]
+    black_hair_group = [fiona, mollie, andy, jennifer, chidu, stefan]
+    brown_hair_group = [dan, daryl, rodney, charlie, timr, daniel, ben]
+    blonde_hair_group = [alex, ashleigh, timo]
+    long_hair_group = [mollie, andy, jennifer, ashleigh]
+    short_hair_group = [dan, daryl, fiona, rodney, alex, chidu, timo, charlie, timr, daniel, stefan, ben]
+    curly_hair_group = [mollie, jennifer]
+    light_top_group = [dan, fiona, andy, ashleigh]
+    blue_top_group = [daryl, rodney, alex, jennifer, timr, stefan, ben]
+    dark_top_group = [charlie]
+    checkered_top_group = [timo, daniel]
+    necklace_group = [rodney, mollie, jennifer]
 
-    # Daryl'ls traits
-
-    PersonTraits.create(person_id: daryl.id,
-                        trait_id: male.id)
-    PersonTraits.create(person_id: daryl.id,
-                        trait_id: clean_shaven.id)
-    PersonTraits.create(person_id: daryl.id,
-                        trait_id: brown_hair.id)
-    PersonTraits.create(person_id: daryl.id,
-                        trait_id: short_hair.id)
-    PersonTraits.create(person_id: daryl.id,
-                        trait_id: blue_top.id)
-
-    # Fiona's traits
-
-    PersonTraits.create(person_id: fiona.id,
-                        trait_id: female.id)
-    PersonTraits.create(person_id: fiona.id,
-                        trait_id: clean_shaven.id)
-    PersonTraits.create(person_id: fiona.id,
-                        trait_id: black_hair.id)
-    PersonTraits.create(person_id: fiona.id,
-                        trait_id: short_hair.id)
-    PersonTraits.create(person_id: fiona.id,
-                        trait_id: light_top.id)
-
-    # Rodney's traits
-
-    PersonTraits.create(person_id: rodney.id,
-                        trait_id: male.id)
-    PersonTraits.create(person_id: rodney.id,
-                        trait_id: beard.id)
-    PersonTraits.create(person_id: rodney.id,
-                        trait_id: short_hair.id)
-    PersonTraits.create(person_id: rodney.id,
-                        trait_id: brown_hair.id)
-    PersonTraits.create(person_id: rodney.id,
-                        trait_id: necklace.id)
-    PersonTraits.create(person_id: rodney.id,
-                        trait_id: blue_top.id)
-    PersonTraits.create(person_id: rodney.id,
-                        trait_id: silly_face.id)
-
-    # Mollie's traits
-
-    PersonTraits.create(person_id: mollie.id,
-                        trait_id: female.id)
-    PersonTraits.create(person_id: mollie.id,
-                        trait_id: clean_shaven.id)
-    PersonTraits.create(person_id: mollie.id,
-                        trait_id: glasses.id)
-    PersonTraits.create(person_id: mollie.id,
-                        trait_id: long_hair.id)
-    PersonTraits.create(person_id: mollie.id,
-                        trait_id: curly_hair.id)
-    PersonTraits.create(person_id: mollie.id,
-                        trait_id: necklace.id)
-    PersonTraits.create(person_id: mollie.id,
-                        trait_id: black_hair.id)
-
-    # Andy's traits
-
-    PersonTraits.create(person_id: andy.id,
-                        trait_id: male.id)
-    PersonTraits.create(person_id: andy.id,
-                        trait_id: glasses.id)
-    PersonTraits.create(person_id: andy.id,
-                        trait_id: stubble.id)
-    PersonTraits.create(person_id: andy.id,
-                        trait_id: black_hair.id)
-    PersonTraits.create(person_id: andy.id,
-                        trait_id: long_hair.id)
-    PersonTraits.create(person_id: andy.id,
-                        trait_id: light_top.id)
-
-    # Alex's traits
-
-    PersonTraits.create(person_id: alex.id,
-                        trait_id: male.id)
-    PersonTraits.create(person_id: alex.id,
-                        trait_id: stubble.id)
-    PersonTraits.create(person_id: alex.id,
-                        trait_id: blonde_hair.id)
-    PersonTraits.create(person_id: alex.id,
-                        trait_id: short_hair.id)
-    PersonTraits.create(person_id: alex.id,
-                        trait_id: blue_top.id)
-
-    # Jennifer's traits
-
-    PersonTraits.create(person_id: jennifer.id,
-                        trait_id: female.id)
-    PersonTraits.create(person_id: jennifer.id,
-                        trait_id: clean_shaven.id)
-    PersonTraits.create(person_id: jennifer.id,
-                        trait_id: curly_hair.id)
-    PersonTraits.create(person_id: jennifer.id,
-                        trait_id: long_hair.id)
-    PersonTraits.create(person_id: jennifer.id,
-                        trait_id: black_hair.id)
-    PersonTraits.create(person_id: jennifer.id,
-                        trait_id: necklace.id)
-    PersonTraits.create(person_id: jennifer.id,
-                        trait_id: blue_top.id)
-
-    # Ashleigh's traits
-
-    PersonTraits.create(person_id: ashleigh.id,
-                        trait_id: female.id)
-    PersonTraits.create(person_id: ashleigh.id,
-                        trait_id: clean_shaven.id)
-    PersonTraits.create(person_id: ashleigh.id,
-                        trait_id: long_hair.id)
-    PersonTraits.create(person_id: ashleigh.id,
-                        trait_id: blonde_hair.id)
-    PersonTraits.create(person_id: ashleigh.id,
-                        trait_id: silly_face.id)
-    PersonTraits.create(person_id: ashleigh.id,
-                        trait_id: light_top.id)
-
-    # Chidu's traits
-
-    PersonTraits.create(person_id: chidu.id,
-                        trait_id: male.id)
-    PersonTraits.create(person_id: chidu.id,
-                        trait_id: clean_shaven.id)
-    PersonTraits.create(person_id: chidu.id,
-                        trait_id: black_hair.id)
-    PersonTraits.create(person_id: chidu.id,
-                        trait_id: short_hair.id)
+    male_group.each do |x|
+        PersonTraits.create(person_id: x.id,
+                            trait_id: male.id)
+    end
+    female_group.each do |x|
+        PersonTraits.create(person_id: x.id,
+                            trait_id: female.id)
+    end
+    silly_face_group.each do |x|
+        PersonTraits.create(person_id: x.id,
+                            trait_id: silly_face.id)
+    end
+    beard_group.each do |x|
+        PersonTraits.create(person_id: x.id,
+                            trait_id: beard.id)
+    end
+    stubble_group.each do |x|
+        PersonTraits.create(person_id: x.id,
+                            trait_id: stubble.id)
+    end
+    clean_shaven_group.each do |x|
+        PersonTraits.create(person_id: x.id,
+                            trait_id: clean_shaven.id)
+    end
+    glasses_group.each do |x|
+        PersonTraits.create(person_id: x.id,
+                            trait_id: glasses.id)
+    end
+    black_hair_group.each do |x|
+        PersonTraits.create(person_id: x.id,
+                            trait_id: black_hair.id)
+    end
+    brown_hair_group.each do |x|
+        PersonTraits.create(person_id: x.id,
+                            trait_id: brown_hair.id)
+    end
+    blonde_hair_group.each do |x|
+        PersonTraits.create(person_id: x.id,
+                            trait_id: blonde_hair.id)
+    end
+    long_hair_group.each do |x|
+        PersonTraits.create(person_id: x.id,
+                            trait_id: long_hair.id)
+    end
+    short_hair_group.each do |x|
+        PersonTraits.create(person_id: x.id,
+                            trait_id: short_hair.id)
+    end
+    curly_hair_group.each do |x|
+        PersonTraits.create(person_id: x.id,
+                            trait_id: curly_hair.id)
+    end
+    light_top_group.each do |x|
+        PersonTraits.create(person_id: x.id,
+                            trait_id: light_top.id)
+    end
+    blue_top_group.each do |x|
+        PersonTraits.create(person_id: x.id,
+                            trait_id: blue_top.id)
+    end
+    dark_top_group.each do |x|
+        PersonTraits.create(person_id: x.id,
+                            trait_id: dark_top.id)
+    end
+    checkered_top_group.each do |x|
+        PersonTraits.create(person_id: x.id,
+                            trait_id: checkered_top.id)
+    end
+    necklace_group.each do |x|
+        PersonTraits.create(person_id: x.id,
+                            trait_id: necklace.id)
+    end
     PersonTraits.create(person_id: chidu.id,
                         trait_id: chidu_top.id)
-
-    # Tim O's traits
-
-    PersonTraits.create(person_id: timo.id,
-                        trait_id: male.id)
-    PersonTraits.create(person_id: timo.id,
-                        trait_id: stubble.id)
-    PersonTraits.create(person_id: timo.id,
-                        trait_id: blonde_hair.id)
-    PersonTraits.create(person_id: timo.id,
-                        trait_id: short_hair.id)
-    PersonTraits.create(person_id: timo.id,
-                        trait_id: checkered_top.id)
-
-    # Charlie's traits
-
-    PersonTraits.create(person_id: charlie.id,
-                        trait_id: male.id)
-    PersonTraits.create(person_id: charlie.id,
-                        trait_id: stubble.id)
-    PersonTraits.create(person_id: charlie.id,
-                        trait_id: silly_face.id)
-    PersonTraits.create(person_id: charlie.id,
-                        trait_id: brown_hair.id)
-    PersonTraits.create(person_id: charlie.id,
-                        trait_id: short_hair.id)
-    PersonTraits.create(person_id: charlie.id,
-                        trait_id: dark_top.id)
-
-    # Tim R's traits
-
-    PersonTraits.create(person_id: timr.id,
-                        trait_id: male.id)
-    PersonTraits.create(person_id: timr.id,
-                        trait_id: stubble.id)
-    PersonTraits.create(person_id: timr.id,
-                        trait_id: short_hair.id)
-    PersonTraits.create(person_id: timr.id,
-                        trait_id: brown_hair.id)
-    PersonTraits.create(person_id: timr.id,
-                        trait_id: blue_top.id)
-
-    # Daniel's traits
-
-    PersonTraits.create(person_id: daniel.id,
-                        trait_id: male.id)
-    PersonTraits.create(person_id: daniel.id,
-                        trait_id: stubble.id)
-    PersonTraits.create(person_id: daniel.id,
-                        trait_id: short_hair.id)
-    PersonTraits.create(person_id: daniel.id,
-                        trait_id: brown_hair.id)
-    PersonTraits.create(person_id: daniel.id,
-                        trait_id: checkered_top.id)
-    PersonTraits.create(person_id: daniel.id,
-                        trait_id: silly_face.id)
-
-    # Stefan's traits
-
-    PersonTraits.create(person_id: stefan.id,
-                        trait_id: male.id)
     PersonTraits.create(person_id: stefan.id,
                         trait_id: cigarette.id)
-    PersonTraits.create(person_id: stefan.id,
-                        trait_id: stubble.id)
-    PersonTraits.create(person_id: stefan.id,
-                        trait_id: black_hair.id)
-    PersonTraits.create(person_id: stefan.id,
-                        trait_id: short_hair.id)
-    PersonTraits.create(person_id: stefan.id,
-                        trait_id: blue_top.id)
-
-    # Ben's traits
-
-    PersonTraits.create(person_id: ben.id,
-                        trait_id: male.id)
-    PersonTraits.create(person_id: ben.id,
-                        trait_id: stubble.id)
-    PersonTraits.create(person_id: ben.id,
-                        trait_id: short_hair.id)
-    PersonTraits.create(person_id: ben.id,
-                        trait_id: brown_hair.id)
-    PersonTraits.create(person_id: ben.id,
-                        trait_id: silly_face.id)
-    PersonTraits.create(person_id: ben.id,
-                        trait_id: blue_top.id)
 end
