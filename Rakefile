@@ -36,13 +36,13 @@ end
 
 task :populate_local do
   env = ENV['RACK_ENV]'] || 'development'
-  DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://localhost/guesswho_#{env}")
+  DataMapper.setup(:default, ENV['DATABASE_URL'] || 'postgres://localhost/guesswho_#{env}')
   require './crowd_data'
   april_db
 end
 
 task :populate_remote do
-  DataMapper.setup(:default,  "postgres://qekcokqxsmmhyx:U6D6ctPM8ou3sXJqkugBEt26Z1@ec2-54-197-224-173.compute-1.amazonaws.com:5432/d9t0v2bnqu246p")
+  DataMapper.setup(:default, 'postgres://qekcokqxsmmhyx:U6D6ctPM8ou3sXJqkugBEt26Z1@ec2-54-197-224-173.compute-1.amazonaws.com:5432/d9t0v2bnqu246p')
 
   DataMapper.finalize
 
@@ -53,7 +53,7 @@ task :populate_remote do
 end
 
 task :reset_local do
-  DataMapper.setup(:default,  "postgres://localhost/guesswho_development")
+  DataMapper.setup(:default, 'postgres://localhost/guesswho_development')
 
   DataMapper.finalize
 
@@ -70,7 +70,7 @@ task :reset_local do
 end
 
 task :reset_remote do
-  DataMapper.setup(:default, "postgres://qekcokqxsmmhyx:U6D6ctPM8ou3sXJqkugBEt26Z1@ec2-54-197-224-173.compute-1.amazonaws.com:5432/d9t0v2bnqu246p")
+  DataMapper.setup(:default, 'postgres://qekcokqxsmmhyx:U6D6ctPM8ou3sXJqkugBEt26Z1@ec2-54-197-224-173.compute-1.amazonaws.com:5432/d9t0v2bnqu246p')
 
   DataMapper.finalize
 
@@ -84,5 +84,4 @@ task :reset_remote do
   end
   Player.all.destroy
   PersonPlayer.all.destroy
-
 end
