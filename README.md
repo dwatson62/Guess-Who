@@ -1,7 +1,7 @@
 Guess Who
 =======================
 
-[![Code Climate](https://codeclimate.com/github/dwatson62/Guess-Who/badges/gpa.svg)](https://codeclimate.com/github/dwatson62/Guess-Who)
+[![Code Climate](https://codeclimate.com/github/dwatson62/Guess-Who/badges/gpa.svg)](https://codeclimate.com/github/dwatson62/Guess-Who)[![Build Status](https://travis-ci.org/dwatson62/Guess-Who.svg?branch=travis)](https://travis-ci.org/dwatson62/Guess-Who)
 
 ## Synopsis
 
