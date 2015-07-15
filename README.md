@@ -1,11 +1,15 @@
 Guess Who
 =======================
 
+[![Code Climate](https://codeclimate.com/github/dwatson62/Guess-Who/badges/gpa.svg)](https://codeclimate.com/github/dwatson62/Guess-Who)
+
 ## Synopsis
 
-My project for Lab Week is to recreate Guess Who online, using the April cohort as the characters. This is to practice Ruby backend skills and database management.
+During Lab Week at Makers Academy, I decided as my personal project to create Guess Who, using my fellow students as the characters. I used the technologies that I had been learning at the time; Ruby and Sinatra for the framework.
 
-![Guess Who](http://stayonfountain.com/wp-content/uploads/2011/01/guess-who.jpg)
+I found this project quite fun and a great way to practice Ruby backend skills and database management. In particular, this taught me a lot about database associations, pairing up different traits to each character.
+
+Also available at https://thawing-peak-9435.herokuapp.com/
 
 ## To install
 
@@ -14,21 +18,15 @@ My project for Lab Week is to recreate Guess Who online, using the April cohort 
 - Run "bundle"
 - Run "rake populate_local" to populate the database with April cohort
 - Run "rackup" and visit localhost://9292
-- To restart the game run rake tasks "database_cleaner" and then "populate local"
 
+To run the tests after installation:
 
-Available at https://thawing-peak-9435.herokuapp.com/
-
+- Create the database locally in postgres "guesswho_test"
+- Run Rspec
 
 ## Technologies Used
 
 - Ruby
-- Datamapper, Postgres PSQL
+- Datamapper, Postgres
 - Sinatra
 - Rspec, Capybara
-
-## Job List
-
-- Want to improve the style and look of the game
-- Need to edit the database code so that the game can work in production
-- Add the rest of the cohort

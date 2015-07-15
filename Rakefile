@@ -36,8 +36,12 @@ end
 
 task :populate_local do
   DataMapper.setup(:default, ENV['DATABASE_URL'] || 'postgres://localhost/guesswho_development')
+  DataMapper.finalize
+
+  DataMapper.auto_upgrade!
   require './crowd_data'
   april_db
+  puts 'Database loaded'
 end
 
 task :populate_remote do
@@ -66,6 +70,7 @@ task :reset_local do
   end
   Player.all.destroy
   PersonPlayer.all.destroy
+  puts 'Database cleaned'
 end
 
 task :reset_remote do
@@ -83,4 +88,5 @@ task :reset_remote do
   end
   Player.all.destroy
   PersonPlayer.all.destroy
+  puts 'Database cleaned'
 end

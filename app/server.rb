@@ -17,11 +17,10 @@ enable :sessions
 set :session_secret, 'super secret'
 
 get '/' do
-  people = Person.all
-  people.each do |x|
-    x.up1 = true
-    x.up2 = true
-    x.save
+  Person.all.each do |person|
+    person.up1 = true
+    person.up2 = true
+    person.save
   end
   Player.all.destroy
   PersonPlayer.all.destroy
@@ -73,7 +72,6 @@ post '/game' do
 end
 
 post '/guess' do
-  # byebug
   if session[:player_turn] == 1
     find(PersonPlayer.last)
     @result = @game.accuse(params[:guess_person], 1)
@@ -96,9 +94,6 @@ get '/win' do
 end
 
 delete '/startagain' do
-  # DatabaseCleaner.strategy = :transaction
-  # DatabaseCleaner.clean_with(:truncation)
-  # DatabaseCleaner.start
   redirect to '/'
 end
 

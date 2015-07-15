@@ -4,7 +4,6 @@ require 'byebug'
 
 describe Game do
   before(:each) do
-    # byebug
     test_db
   end
 
