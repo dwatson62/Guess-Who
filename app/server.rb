@@ -1,5 +1,4 @@
 require 'byebug'
-require './crowd_data'
 require 'database_cleaner'
 require 'data_mapper'
 require 'rack-flash'
@@ -77,10 +76,10 @@ post '/guess' do
   # byebug
   if session[:player_turn] == 1
     find(PersonPlayer.last)
-    @result = @game.is_it(params[:guess_person], 1)
+    @result = @game.accuse(params[:guess_person], 1)
   else
     find(PersonPlayer.first)
-    @result = @game.is_it(params[:guess_person], 2)
+    @result = @game.accuse(params[:guess_person], 2)
   end
 
   redirect to '/win' if @result == 'You win!'

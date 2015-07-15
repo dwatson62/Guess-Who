@@ -4,7 +4,7 @@ require './crowd_data'
 feature 'To win the game' do
   context 'players have chosen Fred and Boris' do
     before(:each) do
-      test_db1
+      test_db
       visit '/'
       click_link 'Player 1'
       click_button 'Fred'

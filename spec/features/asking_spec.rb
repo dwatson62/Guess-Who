@@ -3,7 +3,7 @@ require './app/server'
 feature 'Playing the game' do
   context 'players choose Fred and Boris' do
     before(:each) do
-      test_db1
+      test_db
       visit '/'
       click_link 'Player 1'
       click_button 'Fred'
@@ -33,7 +33,7 @@ feature 'Playing the game' do
 
   context 'players choose John and Boris' do
     before(:each) do
-      test_db1
+      test_db
       visit '/'
       click_link 'Player 1'
       click_button 'John'

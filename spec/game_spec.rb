@@ -1,9 +1,11 @@
 require './app/server'
+require './crowd_data'
 require 'byebug'
 
 describe Game do
   before(:each) do
-    test_db1
+    # byebug
+    test_db
   end
 
   context 'on creation' do
@@ -33,12 +35,6 @@ describe Game do
     end
   end
 
-  context 'cannot choose' do
-    it 'a character that does not exist' do
-      expect { subject.select('Frank') }.to raise_error 'Character not found'
-    end
-  end
-
   context 'player can see all the people that have not been eliminated' do
     it { is_expected.to respond_to(:show_all).with(1).argument }
 
@@ -58,7 +54,7 @@ describe Game do
   context 'player can ask' do
     it { is_expected.to respond_to(:correct_guess).with(1).argument }
     it { is_expected.to respond_to(:incorrect_guess).with(1).argument }
-    it { is_expected.to respond_to(:flip_down).with(1).argument }
+    it { is_expected.to respond_to(:flip_down).with(2).argument }
     it { is_expected.to respond_to(:ask).with(2).arguments }
 
     context 'if he has a hat' do
@@ -138,18 +134,18 @@ describe Game do
     end
   end
 
-  context 'player can guess the person' do
+  context 'player can accuse the person' do
     it 'and win the game' do
       subject.select('Fred')
-      expect(subject.is_it('Fred', 1)).to eq 'You win!'
+      expect(subject.accuse('Fred', 1)).to eq 'You win!'
     end
-    it 'but if they guess wrong they do not win' do
+    it 'but if they accuse wrong they do not win' do
       subject.select('Fred')
-      expect(subject.is_it('Boris', 1)).to eq 'Try again!'
+      expect(subject.accuse('Boris', 1)).to eq 'Try again!'
     end
     it 'an that character is eliminated from the game' do
       subject.select('Fred')
-      subject.is_it('Boris', 1)
+      subject.accuse('Boris', 1)
       expect(subject.show_all(1).length).to eq 4
     end
   end

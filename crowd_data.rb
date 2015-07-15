@@ -1,21 +1,21 @@
 require './app/server'
 
-def test_db1
-  Crowd.create
+def test_db
+  crowd = Crowd.create
   fred = Person.create(name: 'Fred',
-                       crowd_id: Crowd.first.id,
+                       crowd_id: crowd.id,
                        picture: '/images/fred.jpg')
   boris = Person.create(name: 'Boris',
-                        crowd_id: Crowd.first.id,
+                        crowd_id: crowd.id,
                         picture: '/images/boris.jpg')
   john = Person.create(name: 'John',
-                       crowd_id: Crowd.first.id,
+                       crowd_id: crowd.id,
                        picture: '/images/john.jpg')
   barry = Person.create(name: 'Barry',
-                        crowd_id: Crowd.first.id,
+                        crowd_id: crowd.id,
                         picture: '/images/barry.jpg')
   brian = Person.create(name: 'Brian',
-                        crowd_id: Crowd.first.id,
+                        crowd_id: crowd.id,
                         picture: '/images/brian.jpg')
   hat = Trait.create(description: 'Hat')
   black_hair = Trait.create(description: 'BlackHair')
@@ -35,58 +35,57 @@ def test_db1
 end
 
 def april_db
-  Crowd.create
-  Player.create
-  Player.create
+  crowd = Crowd.create
+  2.times { Player.create }
   # april people
 
   dan = Person.create(name: 'Dan',
-                      crowd_id: Crowd.first.id,
+                      crowd_id: crowd.id,
                       picture: '/images/dan.jpg')
   daryl = Person.create(name: 'Daryl',
-                        crowd_id: Crowd.first.id,
+                        crowd_id: crowd.id,
                         picture: '/images/daryl.jpg')
   fiona = Person.create(name: 'Fiona',
-                        crowd_id: Crowd.first.id,
+                        crowd_id: crowd.id,
                         picture: '/images/fiona.jpg')
   rodney = Person.create(name: 'Rodney',
-                         crowd_id: Crowd.first.id,
+                         crowd_id: crowd.id,
                          picture: '/images/rodney.jpg')
   mollie = Person.create(name: 'Mollie',
-                         crowd_id: Crowd.first.id,
+                         crowd_id: crowd.id,
                          picture: '/images/mollie.jpg')
   andy = Person.create(name: 'Andy',
-                       crowd_id: Crowd.first.id,
+                       crowd_id: crowd.id,
                        picture: '/images/andy.jpg')
   alex = Person.create(name: 'Alex',
-                       crowd_id: Crowd.first.id,
+                       crowd_id: crowd.id,
                        picture: '/images/alex.jpg')
   jennifer = Person.create(name: 'Jennifer',
-                           crowd_id: Crowd.first.id,
+                           crowd_id: crowd.id,
                            picture: '/images/jennifer.jpg')
   ashleigh = Person.create(name: 'Ashleigh',
-                           crowd_id: Crowd.first.id,
+                           crowd_id: crowd.id,
                            picture: '/images/ashleigh.jpg')
   chidu = Person.create(name: 'Chidu',
-                        crowd_id: Crowd.first.id,
+                        crowd_id: crowd.id,
                         picture: '/images/chidu.jpg')
   timo = Person.create(name: 'TimO',
-                       crowd_id: Crowd.first.id,
+                       crowd_id: crowd.id,
                        picture: '/images/timo.jpg')
   charlie = Person.create(name: 'Charlie',
-                          crowd_id: Crowd.first.id,
+                          crowd_id: crowd.id,
                           picture: '/images/charlie.jpg')
   timr = Person.create(name: 'TimR',
-                       crowd_id: Crowd.first.id,
+                       crowd_id: crowd.id,
                        picture: '/images/timr.jpg')
   daniel = Person.create(name: 'Daniel',
-                         crowd_id: Crowd.first.id,
+                         crowd_id: crowd.id,
                          picture: '/images/daniel.jpg')
   stefan = Person.create(name: 'Stefan',
-                         crowd_id: Crowd.first.id,
+                         crowd_id: crowd.id,
                          picture: '/images/stefan.jpg')
   ben = Person.create(name: 'Ben',
-                      crowd_id: Crowd.first.id,
+                      crowd_id: crowd.id,
                       picture: '/images/ben.jpg')
 
   # types of traits
@@ -131,76 +130,76 @@ def april_db
   checkered_top_group = [timo, daniel]
   necklace_group = [rodney, mollie, jennifer]
 
-  male_group.each do |x|
-    PersonTraits.create(person_id: x.id,
+  male_group.each do |person|
+    PersonTraits.create(person_id: person.id,
                         trait_id: male.id)
   end
-  female_group.each do |x|
-    PersonTraits.create(person_id: x.id,
+  female_group.each do |person|
+    PersonTraits.create(person_id: person.id,
                         trait_id: female.id)
   end
-  silly_face_group.each do |x|
-    PersonTraits.create(person_id: x.id,
+  silly_face_group.each do |person|
+    PersonTraits.create(person_id: person.id,
                         trait_id: silly_face.id)
   end
-  beard_group.each do |x|
-    PersonTraits.create(person_id: x.id,
+  beard_group.each do |person|
+    PersonTraits.create(person_id: person.id,
                         trait_id: beard.id)
   end
-  stubble_group.each do |x|
-    PersonTraits.create(person_id: x.id,
+  stubble_group.each do |person|
+    PersonTraits.create(person_id: person.id,
                         trait_id: stubble.id)
   end
-  clean_shaven_group.each do |x|
-    PersonTraits.create(person_id: x.id,
+  clean_shaven_group.each do |person|
+    PersonTraits.create(person_id: person.id,
                         trait_id: clean_shaven.id)
   end
-  glasses_group.each do |x|
-    PersonTraits.create(person_id: x.id,
+  glasses_group.each do |person|
+    PersonTraits.create(person_id: person.id,
                         trait_id: glasses.id)
   end
-  black_hair_group.each do |x|
-    PersonTraits.create(person_id: x.id,
+  black_hair_group.each do |person|
+    PersonTraits.create(person_id: person.id,
                         trait_id: black_hair.id)
   end
-  brown_hair_group.each do |x|
-    PersonTraits.create(person_id: x.id,
+  brown_hair_group.each do |person|
+    PersonTraits.create(person_id: person.id,
                         trait_id: brown_hair.id)
   end
-  blonde_hair_group.each do |x|
-    PersonTraits.create(person_id: x.id,
+  blonde_hair_group.each do |person|
+    PersonTraits.create(person_id: person.id,
                         trait_id: blonde_hair.id)
   end
-  long_hair_group.each do |x|
-    PersonTraits.create(person_id: x.id,
+  long_hair_group.each do |person|
+    PersonTraits.create(person_id: person.id,
                         trait_id: long_hair.id)
   end
-  short_hair_group.each do |x|
-    PersonTraits.create(person_id: x.id,
+  short_hair_group.each do |person|
+    PersonTraits.create(person_id: person.id,
                         trait_id: short_hair.id)
   end
-  curly_hair_group.each do |x|
-    PersonTraits.create(person_id: x.id,
+  curly_hair_group.each do |person|
+    PersonTraits.create(person_id: person.id,
                         trait_id: curly_hair.id)
   end
-  light_top_group.each do |x|
-    PersonTraits.create(person_id: x.id,
+  light_top_group.each do |person|
+    PersonTraits.create(person_id: person.id,
                         trait_id: light_top.id)
   end
-  blue_top_group.each do |x|
-    PersonTraits.create(person_id: x.id,
+  blue_top_group.each do |person|
+    PersonTraits.create(person_id: person.id,
                         trait_id: blue_top.id)
   end
-  dark_top_group.each do |x|
-    PersonTraits.create(person_id: x.id,
+  dark_top_group.each do |person|
+    PersonTraits.create(person_id: person.id,
                         trait_id: dark_top.id)
   end
-  checkered_top_group.each do |x|
-    PersonTraits.create(person_id: x.id,
+  checkered_top_group.each do |person|
+    PersonTraits.create(person_id: person.id,
                         trait_id: checkered_top.id)
   end
-  necklace_group.each do |x|
-    PersonTraits.create(person_id: x.id,
+  necklace_group.each do |person|
+    PersonTraits.create(person_id: person.id,
                         trait_id: necklace.id)
   end
   PersonTraits.create(person_id: chidu.id,

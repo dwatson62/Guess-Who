@@ -35,8 +35,7 @@ task :database_cleaner do
 end
 
 task :populate_local do
-  env = ENV['RACK_ENV]'] || 'development'
-  DataMapper.setup(:default, ENV['DATABASE_URL'] || 'postgres://localhost/guesswho_#{env}')
+  DataMapper.setup(:default, ENV['DATABASE_URL'] || 'postgres://localhost/guesswho_development')
   require './crowd_data'
   april_db
 end

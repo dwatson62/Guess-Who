@@ -2,7 +2,7 @@ require './app/server'
 
 feature 'Each player' do
   scenario 'chooses a character' do
-    test_db1
+    test_db
     visit '/'
     click_link 'Player 1'
     expect(page).to have_content('Please select a character')
@@ -16,7 +16,7 @@ feature 'Each player' do
     expect(current_path).to eq '/game'
   end
   scenario 'chooses other characters' do
-    test_db1
+    test_db
     visit '/'
     click_link 'Player 1'
     click_button 'Brian'

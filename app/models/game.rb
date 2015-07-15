@@ -10,7 +10,6 @@ class Game
 
   def select(character)
     @character = Person.first(name: character)
-    fail 'Character not found' if @character.nil?
   end
 
   def show_all(player)
@@ -25,8 +24,7 @@ class Game
     trait = Trait.first(description: item)
     person = PersonTraits.first(person_id: character.id, trait_id: trait.id)
     @ids = []
-    person_traits = PersonTraits.all
-    person_traits.each do |thing|
+    PersonTraits.all.each do |thing|
       @ids << thing.person_id if thing.trait_id == trait.id
     end
     if person
@@ -46,19 +44,23 @@ class Game
 
   def correct_guess(player)
     @targets = Person.all(:id.not => @ids)
-    flip_down(player)
+    find_people_to_flip(player)
   end
 
   def incorrect_guess(player)
     @targets = Person.all(id: @ids)
-    flip_down(player)
+    find_people_to_flip(player)
   end
 
-  def flip_down(player)
+  def find_people_to_flip(player)
     people_to_flip = []
-    @targets.each { |x| people_to_flip << x.id }
-    people_to_flip.each do |x|
-      hit = Person.first(id: x)
+    @targets.each { |person| people_to_flip << person.id }
+    flip_down(player, people_to_flip)
+  end
+
+  def flip_down(player, people_to_flip)
+    people_to_flip.each do |person|
+      hit = Person.first(id: person)
       if player == 1
         hit.up1 = false
       else
@@ -68,19 +70,22 @@ class Game
     end
   end
 
-  def is_it(person, player)
+  def accuse(person, player)
     guess = Person.first(name: person)
     if guess.name == character.name
-      # the player guessed correctly and wins
       'You win!'
     else
-      if player == 1
-        guess.up1 = false
-      else
-        guess.up2 = false
-      end
-      guess.save
-      'Try again!'
+      incorrectly_accuse(guess, player)
     end
+  end
+
+  def incorrectly_accuse(guess, player)
+    if player == 1
+      guess.up1 = false
+    else
+      guess.up2 = false
+    end
+    guess.save
+    'Try again!'
   end
 end
