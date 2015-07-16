@@ -1,7 +1,7 @@
 Guess Who
 =======================
 
-[![Code Climate](https://codeclimate.com/github/dwatson62/Guess-Who/badges/gpa.svg)](https://codeclimate.com/github/dwatson62/Guess-Who) [![Build Status](https://travis-ci.org/dwatson62/Guess-Who.svg?branch=travis)](https://travis-ci.org/dwatson62/Guess-Who) [![Coverage Status](https://coveralls.io/repos/dwatson62/Guess-Who/badge.svg?branch=master&service=github)](https://coveralls.io/github/dwatson62/Guess-Who?branch=master)
+[![Code Climate](https://codeclimate.com/github/dwatson62/Guess-Who/badges/gpa.svg)](https://codeclimate.com/github/dwatson62/Guess-Who) [![Build Status](https://travis-ci.org/dwatson62/Guess-Who.svg?branch=master)](https://travis-ci.org/dwatson62/Guess-Who) [![Coverage Status](https://coveralls.io/repos/dwatson62/Guess-Who/badge.svg?branch=master&service=github)](https://coveralls.io/github/dwatson62/Guess-Who?branch=master)
 
 ## Synopsis
 
