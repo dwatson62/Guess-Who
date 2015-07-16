@@ -15,3 +15,4 @@ gem 'dm-postgres-adapter'
 gem 'database_cleaner'
 gem 'rack-flash3'
 gem 'do_postgres'
+gem 'coveralls', require: false
