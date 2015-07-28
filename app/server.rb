@@ -1,4 +1,3 @@
-require 'byebug'
 require 'database_cleaner'
 require 'data_mapper'
 require 'rack-flash'

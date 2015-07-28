@@ -7,6 +7,7 @@ group :test do
   gem 'capybara'
   gem 'rubocop'
   gem 'byebug'
+  gem 'coveralls', require: false
 end
 
 gem 'sinatra'
@@ -15,4 +16,3 @@ gem 'dm-postgres-adapter'
 gem 'database_cleaner'
 gem 'rack-flash3'
 gem 'do_postgres'
-gem 'coveralls', require: false

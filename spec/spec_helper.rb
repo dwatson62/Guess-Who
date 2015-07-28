@@ -1,7 +1,7 @@
+ENV['RACK_ENV'] = 'test'
+
 require 'coveralls'
 Coveralls.wear!
-
-ENV['RACK_ENV'] = 'test'
 
 require './app/server'
 require 'database_cleaner'

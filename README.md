@@ -13,17 +13,18 @@ Also available at https://thawing-peak-9435.herokuapp.com/
 
 ## To install from terminal
 
+- Make sure you have psql installed in order to create the databases
+
 - ``` git clone https://github.com/dwatson62/Guess-Who ```
-- Create local postgres database "guesswho_development"
+- ```psql -c 'create database guesswho_development;'```
 - ``` bundle ```
-- ``` rake auto_migrate ``` to run the migrations
 - ```rake populate_local``` to populate the game database
 - ```rackup```
 - Visit [http://localhost:9292](http://localhost:9292)
 
 To run the tests after installation:
 
-- Create local postgres database "guesswho_test"
+- ```psql -c 'create database guesswho_test;'```
 - ```rspec```
 
 ## Technologies Used

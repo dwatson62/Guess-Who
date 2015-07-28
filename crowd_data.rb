@@ -37,7 +37,6 @@ end
 def april_db
   crowd = Crowd.create
   2.times { Player.create }
-  # april people
 
   dan = Person.create(name: 'Dan',
                       crowd_id: crowd.id,
