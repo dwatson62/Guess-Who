@@ -1,12 +1,92 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/darylwatson/Desktop/projects/Guess-Who/app/server.rb": [
+      "/Users/darylwatson/Desktop/projects/Guess-Who/app/data_mapper_setup.rb": [
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        1,
         1,
         1,
         1,
         1,
         null,
+        1,
+        null,
+        1
+      ],
+      "/Users/darylwatson/Desktop/projects/Guess-Who/app/models/crowd.rb": [
+        1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        null
+      ],
+      "/Users/darylwatson/Desktop/projects/Guess-Who/app/models/person.rb": [
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/darylwatson/Desktop/projects/Guess-Who/app/models/person_player.rb": [
+        1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        1,
+        null
+      ],
+      "/Users/darylwatson/Desktop/projects/Guess-Who/app/models/person_traits.rb": [
+        1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        1,
+        null
+      ],
+      "/Users/darylwatson/Desktop/projects/Guess-Who/app/models/player.rb": [
+        1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        null
+      ],
+      "/Users/darylwatson/Desktop/projects/Guess-Who/app/models/trait.rb": [
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        1,
+        null
+      ],
+      "/Users/darylwatson/Desktop/projects/Guess-Who/app/server.rb": [
+        1,
+        1,
+        1,
+        1,
         1,
         null,
         1,
@@ -118,85 +198,6 @@
         23,
         23,
         23,
-        null
-      ],
-      "/Users/darylwatson/Desktop/projects/Guess-Who/app/data_mapper_setup.rb": [
-        1,
-        null,
-        1,
-        null,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        null,
-        1,
-        null,
-        1
-      ],
-      "/Users/darylwatson/Desktop/projects/Guess-Who/app/models/crowd.rb": [
-        1,
-        1,
-        null,
-        1,
-        null,
-        1,
-        null
-      ],
-      "/Users/darylwatson/Desktop/projects/Guess-Who/app/models/person.rb": [
-        1,
-        1,
-        null,
-        1,
-        1,
-        1,
-        1,
-        1,
-        null,
-        1,
-        1,
-        1,
-        null
-      ],
-      "/Users/darylwatson/Desktop/projects/Guess-Who/app/models/person_player.rb": [
-        1,
-        1,
-        null,
-        1,
-        null,
-        1,
-        1,
-        null
-      ],
-      "/Users/darylwatson/Desktop/projects/Guess-Who/app/models/person_traits.rb": [
-        1,
-        1,
-        null,
-        1,
-        null,
-        1,
-        1,
-        null
-      ],
-      "/Users/darylwatson/Desktop/projects/Guess-Who/app/models/player.rb": [
-        1,
-        1,
-        null,
-        1,
-        null,
-        1,
-        null
-      ],
-      "/Users/darylwatson/Desktop/projects/Guess-Who/app/models/trait.rb": [
-        1,
-        1,
-        null,
-        1,
-        1,
-        null,
-        1,
         null
       ],
       "/Users/darylwatson/Desktop/projects/Guess-Who/app/models/game.rb": [
@@ -913,6 +914,6 @@
         null
       ]
     },
-    "timestamp": 1438116028
+    "timestamp": 1438116382
   }
 }

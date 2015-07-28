@@ -1,6 +1,4 @@
-require 'data_mapper'
-
-env = ENV['RACK_ENV'] || 'development'
+env = 'test'
 
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://localhost/guesswho_#{env}")
 

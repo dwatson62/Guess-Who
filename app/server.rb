@@ -1,9 +1,8 @@
 require 'database_cleaner'
 require 'data_mapper'
+require_relative 'data_mapper_setup'
 require 'rack-flash'
 require 'sinatra'
-
-require_relative 'data_mapper_setup'
 
 require './app/models/game'
 
