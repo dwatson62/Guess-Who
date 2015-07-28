@@ -4,8 +4,6 @@ require 'data_mapper'
 require 'rack-flash'
 require 'sinatra'
 
-require_relative 'data_mapper_setup'
-
 require './app/models/game'
 
 use Rack::Flash

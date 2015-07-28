@@ -1,9 +1,10 @@
 require 'coveralls'
 Coveralls.wear!
 
-ENV['RACK_ENV'] = 'test'
-
+require 'data_mapper'
 require './app/server'
+require 'test_database_setup'
+
 require 'database_cleaner'
 require 'capybara/rspec'
 

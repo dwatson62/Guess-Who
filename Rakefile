@@ -1,4 +1,5 @@
 require 'data_mapper'
+require './app/data_mapper_setup'
 require 'database_cleaner'
 require './app/server'
 require 'rspec/core/rake_task'
