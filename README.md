@@ -11,18 +11,20 @@ I found this project quite fun and a great way to practice Ruby backend skills a
 
 Also available at https://thawing-peak-9435.herokuapp.com/
 
-## To install
+## To install from terminal
 
-- Clone into local repository
-- Create the database locally in postgres "guesswho_development"
-- Run "bundle"
-- Run "rake populate_local" to populate the database with April cohort
-- Run "rackup" and visit localhost://9292
+- ``` git clone https://github.com/dwatson62/Guess-Who ```
+- Create local postgres database "guesswho_development"
+- ``` bundle ```
+- ``` rake auto_migrate ``` to run the migrations
+- ```rake populate_local``` to populate the game database
+- ```rackup```
+- Visit [http://localhost:9292](http://localhost:9292)
 
 To run the tests after installation:
 
-- Create the database locally in postgres "guesswho_test"
-- Run Rspec
+- Create local postgres database "guesswho_test"
+- ```rspec```
 
 ## Technologies Used
 
